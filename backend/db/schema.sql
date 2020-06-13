@@ -21,7 +21,7 @@ CREATE TABLE Users (
 
 CREATE TABLE Photos (
     id SERIAL PRIMARY KEY,
-    poster_id INT REFERENCES Users(id) ON DELETE CASCADE,
+    poster_id VARCHAR REFERENCES Users(id) ON DELETE CASCADE,
     imageURL VARCHAR,
     caption TEXT,
     time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -37,14 +37,14 @@ CREATE TABLE Comments (
 
 CREATE TABLE Likes (
     id SERIAL PRIMARY KEY,
-    liker_id INT REFERENCES Users(id),
+    liker_id VARCHAR REFERENCES Users(id),
     photo_id  INT REFERENCES Photos(id),
     CONSTRAINT UC_like UNIQUE (liker_id, photo_id)
 );
 
 CREATE TABLE Hashtags (
     id SERIAL PRIMARY KEY,
-    tagger_id INT REFERENCES Users(id),
+    tagger_id VARCHAR REFERENCES Users(id),
     photo_id  INT REFERENCES Photos(id),
     tag_name TEXT
 );
