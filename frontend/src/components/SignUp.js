@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { NavLink, useHistory } from 'react-router-dom';
 import { apiURL } from '../util/apiURL';
-// import { signUp } from '../util/firebaseFunctons';
+import { signUp } from '../util/firebaseFunctions';
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -15,8 +15,8 @@ export default function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // let res = await signUp(email, password);
-            // await axios.post(`${API}/users/`, {id: res.user.uid, username: username, password: password, full_name: full_name, avatar: null, email: email});      
+            let res = await signUp(email, password);
+            await axios.post(`${API}/users/`, { id: res.user.uid, username, password, full_name, email });            
             history.push("/home")
         } catch (err) {
             console.log(err);

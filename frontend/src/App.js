@@ -3,28 +3,31 @@ import './App.css';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import Feed from './components/Feed';
-import { Route, Switch } from 'react-router-dom';
+import Profile from './components/Profile';
+// import { Route } from 'react-router-dom';
+import AuthProvider from './providers/AuthProvider';
+import { AuthRoute, ProtectedRoute } from './util/routesUtil';
 
 function App() {
   return (
     <div className="App">
-      {/* <Switch> */}
-          <Route exact path={"/"}>
+      <AuthProvider>
+          <AuthRoute exact path={"/"}>
             <LogIn/>
-          </Route>
-          <Route exact path={"/signup"}>
+          </AuthRoute>
+          <AuthRoute exact path={"/signup"}>
             <SignUp/>
-          </Route>
-          {/* <Route exact path={"/home"}>
+          </AuthRoute>
+          <ProtectedRoute exact path={"/home"}>
             <Feed/>
-          </Route> */}
+          </ProtectedRoute>
           {/* <Route exact path={"/upload"}>
             <Upload/>
           </Route> */}
-          {/* <Route exact path={"/profile"}>
+          <ProtectedRoute exact path={"/profile"}>
             <Profile/>
-          </Route> */}
-        {/* </Switch> */}
+          </ProtectedRoute>
+      </AuthProvider>
     </div>
   );
 }

@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS my_ig_db;
--- CREATE DATABASE my_ig_db;
+DROP DATABASE IF EXISTS my_ig_db;
+CREATE DATABASE my_ig_db;
 
--- \c my_ig_db;
+\c my_ig_db;
 
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Photos CASCADE;
@@ -14,8 +14,6 @@ CREATE TABLE Users (
     username VARCHAR UNIQUE,
     password TEXT,
     full_name TEXT,
-    bio TEXT,
-    avatar VARCHAR,
     email TEXT UNIQUE
 );
 

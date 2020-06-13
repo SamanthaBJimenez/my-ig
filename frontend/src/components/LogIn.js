@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-// import {login} from '../util/firebaseFunctons';
+import { login } from '../util/firebaseFunctions';
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -10,7 +10,7 @@ export default function LogIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    //   await login(email, password);
+      await login(email, password);
       history.push("/home");
     } catch (err) {
       console.log(err);
@@ -45,7 +45,7 @@ export default function LogIn() {
                         <input className="login_input" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
                         <input className="login_input" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} autoComplete="on" />
                         <button className="login_button" type="submit">Log In</button> 
-\                    </form>
+                    </form>
                 </div>
                 <div className="middleDiv">
                     <nav className="midNav">
