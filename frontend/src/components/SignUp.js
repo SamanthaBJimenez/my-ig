@@ -3,6 +3,10 @@ import axios from 'axios';
 import { NavLink, useHistory } from 'react-router-dom';
 import { apiURL } from '../util/apiURL';
 import { signUp } from '../util/firebaseFunctions';
+import '../css/SignUp.css';
+import ig_logo from '../ImgFiles/ig_logo.png';
+import appStore_logo from '../ImgFiles/appStoreIcon.png';
+import googlePlay_logo from '../ImgFiles/googlePlayIcon.png';
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -47,7 +51,7 @@ export default function SignUp() {
 
 <div className="signUp">
             <div className="topDiv">
-                {/* <img className='igImg_signup' src={ig_logo} alt='instagram_logo'/> */}
+                <img className='igImg_signup' src={ig_logo} alt='instagram_logo'/>
                 <h2 className="signup_blurb">Sign up to see photos and videos from your friends.</h2>
                 <form className="signUpForm" onSubmit={handleSubmit}>
                     <input className="signup_input" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
@@ -67,8 +71,8 @@ export default function SignUp() {
             <div className="bottomDiv">
                     <p className="bottomP">Get the app.</p>
                     <div className="appLinks">
-                        {/* <img className='appStore_login' src={appStore_logo} alt='appStore_logo'/> */}
-                        {/* <img className='googlePlay_login' src={googlePlay_logo} alt='googlePlay_logo'/> */}
+                        <img className='appStore_login' src={appStore_logo} alt='appStore_logo'/>
+                        <img className='googlePlay_login' src={googlePlay_logo} alt='googlePlay_logo'/>
                     </div>
             </div>
         </div>
