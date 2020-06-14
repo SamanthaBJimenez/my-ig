@@ -22,25 +22,6 @@ export default function LogIn() {
   };
 
   return (
-    // <div>
-    //   <h1>Login Page</h1>
-    //   <form onSubmit={handleSubmit}>
-    //     <input
-    //       onChange={(e) => setEmail(e.target.value)}
-    //       placeholder="Email"
-    //       value={email}
-    //     />
-    //     <input
-    //       type="password"
-    //       onChange={(e) => setPassword(e.target.value)}
-    //       placeholder="Password"
-    //       value={password}
-    //       autoComplete="on"
-    //     />
-    //     <button type="submit">Login</button>
-    //   </form>
-    // </div>
-
     <div className="mainDiv">
             <div className="logIn">
                 <div className="topDiv">

@@ -29,27 +29,7 @@ export default function SignUp() {
     }
     
     return (
-    //   <div>
-    //     <h1>Sign Up Page</h1>
-    //     <form onSubmit={handleSubmit}>
-    //       <input
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         placeholder="Email"
-    //         value={email}
-    //       />
-    //       <input
-    //         type="password"
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         placeholder="Password"
-    //         value={password}
-    //         autoComplete="on"
-    //       />
-    //       <button type="submit">Sign Up</button>
-    //     </form>
-    //   </div>
-
-
-<div className="signUp">
+        <div className="signUp">
             <div className="topDiv">
                 <img className='igImg_signup' src={ig_logo} alt='instagram_logo'/>
                 <h2 className="signup_blurb">Sign up to see photos and videos from your friends.</h2>
