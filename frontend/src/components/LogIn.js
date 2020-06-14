@@ -14,10 +14,11 @@ export default function LogIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password);
-      history.push("/home");
+        let res = await login(email, password);
+        sessionStorage.loggedUser = res.user.uid
+        history.push("/home");
     } catch (err) {
-      console.log(err);
+        console.log(err);
     }
   };
 
