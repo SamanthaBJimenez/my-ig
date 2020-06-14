@@ -13,14 +13,14 @@ app.use(bodyParser.json());
 // const port = 3005; 
 
 const usersRouter = require('./routes/Users');
-// const photosRouter = require('./routes/Photos');
+const photosRouter = require('./routes/Photos');
 // const hashtagsRouter = require('./routes/Hashtags/Hashtags')
 // const uploadRouter = require('./routes/Uploads/Uploads');
 // const likesRouter = require('./routes/Likes/Likes');
 
 
 app.use('/users', usersRouter);
-// app.use('/photos', photosRouter);
+app.use('/photos', photosRouter);
 // app.use('/hashtags', hashtagsRouter);
 // app.use('/posts/uploads', uploadRouter)
 // app.use('/likes', likesRouter);

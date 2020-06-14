@@ -1,7 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { apiURL } from '../util/apiURL';
+import { AuthContext } from '../providers/AuthProvider';
+import axios from 'axios';
 
 const Feed = () => {
+    const [photos, setPhotos] = useState([]);
+    const API = apiURL();
+    const { token } = useContext(AuthContext);
+    sessionStorage.searchTerm = '';
+
+    const fetchData = async (url) => {
+        try {
+            let res = await axios({
+                method: "get",
+                url: url,
+                headers: {
+                    'AuthToken': token
+                }
+            });
+            setPhotos(res.data.payload);
+        } catch(error) {
+            setPhotos([]);
+        }
+    }
+
+    const searchResult = () => {
+        if(sessionStorage.searchTerm){
+            return <button onClick={() => {sessionStorage.removeItem("searchTerm");window.location.reload()}}>Return to Homepage</button>
+        } else {
+            return null
+        }
+    }
+
+    useEffect(() => {
+        if(sessionStorage.searchTerm){
+            fetchData(`${API}/photos/hashtag/tag/${sessionStorage.searchTerm}`);
+            searchResult();
+        } else {
+            fetchData(`${API}/photos/`);
+        }
+    })
+
+    // const photosFeed = photos.map(photo => {
+    //     return(<><PostImage key={photo.id} photoId={photo.id} avatar={photo.avatar} username={photo.username} filePath={photo.imageurl} caption={photo.caption}/></>)
+    // })
 
     return(
         <div className="feed">
