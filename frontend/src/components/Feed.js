@@ -4,6 +4,7 @@ import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
 import PostImage from './Image';
+import Search from './Search';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import '../css/Feed.css';
 
@@ -55,7 +56,7 @@ const Feed = () => {
                 <div className="midNavDiv">
                     <NavLink className="ig_logo" exact to={"/home"}><img className='igImg' src={ig_logo} alt='instagram_logo'/></NavLink>
                     <div className="search">
-                        {/* <Search/> */}
+                        <Search/>
                     </div>
                     <div className="links">
                         <NavLink className="home" activeClassName={"home_selected"} exact to={"/home"}></NavLink>
