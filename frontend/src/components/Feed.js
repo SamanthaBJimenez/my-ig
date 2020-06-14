@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
+import PostImage from './Image';
+import ig_logo from '../ImgFiles/ig_logo.png';
+import '../css/Feed.css';
 
 const Feed = () => {
     const [photos, setPhotos] = useState([]);
@@ -42,27 +45,27 @@ const Feed = () => {
         }
     })
 
-    // const photosFeed = photos.map(photo => {
-    //     return(<><PostImage key={photo.id} photoId={photo.id} avatar={photo.avatar} username={photo.username} filePath={photo.imageurl} caption={photo.caption}/></>)
-    // })
+    const photosFeed = photos.map(photo => {
+        return(<><PostImage key={photo.id} photoId={photo.id} avatar={photo.avatar} username={photo.username} filePath={photo.imageurl} caption={photo.caption}/></>)
+    })
 
     return(
         <div className="feed">
             <nav className="navbar">
                 <div className="midNavDiv">
-                    {/* <NavLink className="ig_logo" exact to={"/home"}><img className='igImg' src={ig_logo} alt='instagram_logo'/></NavLink> */}
+                    <NavLink className="ig_logo" exact to={"/home"}><img className='igImg' src={ig_logo} alt='instagram_logo'/></NavLink>
                     <div className="search">
                         {/* <Search/> */}
                     </div>
                     <div className="links">
-                        <NavLink className="home" activeClassName={"home_selected"} exact to={"/home"}>Home</NavLink>
-                        <NavLink className="upload" activeClassName={"upload_selected"} exact to={"/upload"}>Upload</NavLink>
-                        <NavLink className="profile" activeClassName={"profile_selected"} exact to={"/profile"}>Profile</NavLink>
+                        <NavLink className="home" activeClassName={"home_selected"} exact to={"/home"}></NavLink>
+                        <NavLink className="upload" activeClassName={"upload_selected"} exact to={"/upload"}></NavLink>
+                        <NavLink className="profile" activeClassName={"profile_selected"} exact to={"/profile"}></NavLink>
                     </div>
                 </div>
             </nav>
             <div className="photosFeed">
-                {/* {photosFeed} */}
+                {photosFeed}
             </div>
             <div className="profileFeed">
                 {/* <DisplayUser/> */}
