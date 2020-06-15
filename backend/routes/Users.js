@@ -2,7 +2,7 @@ const users = require('express').Router();
 const {getAllUsers, createNewUser, getSingleUserById, getSingleUserByEmail} = require('../queries/Users');
 const { checkFirebaseToken } = require('../middleware/auth');
 
-users.get('/', checkFirebaseToken, getAllUsers);
+users.get('/', /*checkFirebaseToken,*/ getAllUsers);
 users.post('/', createNewUser);
 users.get('/id/:id', getSingleUserById)
 users.get('/email/:email', getSingleUserByEmail);
