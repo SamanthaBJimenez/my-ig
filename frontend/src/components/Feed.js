@@ -7,6 +7,7 @@ import PostImage from './Image';
 import Search from './Search';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import '../css/Feed.css';
+import DisplayUser from './DisplayUser';
 
 const Feed = () => {
     const [photos, setPhotos] = useState([]);
@@ -69,7 +70,7 @@ const Feed = () => {
                 {photosFeed}
             </div>
             <div className="profileFeed">
-                {/* <DisplayUser/> */}
+                <DisplayUser/>
             </div>
         </div>
     )

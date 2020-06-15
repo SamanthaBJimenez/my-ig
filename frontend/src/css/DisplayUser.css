@@ -1,0 +1,54 @@
+.loggedUser {
+    margin-top: 6%;
+    position: fixed;
+    left: 65%;
+    right: px;
+    height: 100%;
+    width: 22%;
+    display: inline-flex;
+}
+
+.avatar_home {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.avatarImg {
+    width: 100%;
+}
+
+.infoDivUsername {
+    margin: 12px 0px 0px 14px;
+    vertical-align: baseline;
+    align-items: stretch;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.infoDivFullName {
+    margin: 3px 0px 0px 14px;
+    font: inherit;
+    vertical-align: baseline;
+    align-items: stretch;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: relative;
+    color: rgba(var(--f52,142,142,142),1);
+    display: inline-block;
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
