@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 // import { Route } from 'react-router-dom';
 import AuthProvider from './providers/AuthProvider';
 import { AuthRoute, ProtectedRoute } from './util/routesUtil';
+import Upload from './components/Upload';
 
 function App() {
   return (
@@ -21,9 +22,9 @@ function App() {
           <ProtectedRoute exact path={"/home"}>
             <Feed/>
           </ProtectedRoute>
-          {/* <Route exact path={"/upload"}>
+          <ProtectedRoute exact path={"/upload"}>
             <Upload/>
-          </Route> */}
+          </ProtectedRoute>
           <ProtectedRoute exact path={"/profile"}>
             <Profile/>
           </ProtectedRoute>
