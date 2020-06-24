@@ -24,7 +24,9 @@ const Feed = () => {
                     'AuthToken': token
                 }
             });
+            // debugger;
             setPhotos(res.data.payload);
+            // debugger;
         } catch(error) {
             setPhotos([]);
         }
@@ -48,6 +50,7 @@ const Feed = () => {
     })
 
     const photosFeed = photos.map(photo => {
+        debugger;
         return(<><PostImage key={photo.id} photoId={photo.id} avatar={photo.avatar} username={photo.username} filePath={photo.imageurl} caption={photo.caption}/></>)
     })
 
