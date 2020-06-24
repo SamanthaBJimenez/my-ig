@@ -5,6 +5,8 @@ import Search from './Search';
 import { logout } from '../util/firebaseFunctions';
 import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
+import { Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import '../css/Profile.css';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import axios from 'axios';
@@ -12,6 +14,10 @@ import axios from 'axios';
 const Profile = () => {
     const { token } = useContext(AuthContext);
     let [user, setUser] = useState([]);
+    const [show, setShow] = useState(false);
+    const [full_name, setFullname] = useState("");
+    const [username, setUsername] = useState("");
+    const [bio, setBio] = useState("");
     const API = apiURL();
 
     useEffect(() => {
@@ -31,7 +37,12 @@ const Profile = () => {
         }
         getUserInfo(`${API}/users/id/${sessionStorage.loggedUser}`)
     }, [])
-   
+
+    const handleClose = () => setShow(false);
+
+    const handleShow = () => {
+        setShow(true);
+    }
 
     const displayUser = () => {
         return(
@@ -39,7 +50,7 @@ const Profile = () => {
                 <section className="prof_section">
                     <div className="prof_header">
                         <h1 className="profile_username">{user.username}</h1>
-                        <button className="profile_btn">Edit Profile</button>
+                        <button className="profile_btn" onClick = {handleShow}>Edit Profile</button>
                         <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink>
                     </div>
                     <div className="prof_info">
@@ -47,6 +58,17 @@ const Profile = () => {
                         <p>{user.bio}</p>
                     </div>
                 </section>
+                {/* <div>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Edit Your Information</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Edit Your Information</Modal.Body>
+                        <Modal.Footer>
+                            <Button className = 'modalButton' variant="secondary"></Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div> */}
             </div>
         )
     }
@@ -69,6 +91,23 @@ const Profile = () => {
             <div className="profileDiv">
                 <div className="profileInfo">
                     {displayUser()}
+                    <div>
+                    <div>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Edit Your Information</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <input className="edit_input" type="text" placeholder="Full Name" onChange={(e) => setFullname(e.target.value)} value={full_name} />
+                            <input className="edit_input" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
+                            <input className="edit_input" type="text" placeholder="Bio" onChange={(e) => setBio(e.target.value)} value={bio} />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button className="modalButton" variant="secondary">Save</Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div>
+                    </div>
                 </div>
                 <div className="userAlbumDiv">
                     {/* <UserPhotoAlbum/> */}
