@@ -1,5 +1,6 @@
 import app from "firebase/app";
 import "firebase/auth";
+import "firebase/storage";
 
 const {
   REACT_APP_APIKEY,
