@@ -5,8 +5,7 @@ import Search from './Search';
 import { logout } from '../util/firebaseFunctions';
 import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
-import { Button } from 'react-bootstrap';
-import { Modal } from 'react-bootstrap';
+import { Form, InputGroup, FormControl, Button, Modal, Col } from 'react-bootstrap';
 import '../css/Profile.css';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import axios from 'axios';
@@ -15,9 +14,9 @@ const Profile = () => {
     const { token } = useContext(AuthContext);
     let [user, setUser] = useState([]);
     const [show, setShow] = useState(false);
-    const [full_name, setFullname] = useState("");
-    const [username, setUsername] = useState("");
-    const [bio, setBio] = useState("");
+    const [full_name, setFullname] = useState(user.full_name);
+    const [username, setUsername] = useState(user.username);
+    const [bio, setBio] = useState(user.bio);
     const API = apiURL();
 
     useEffect(() => {
@@ -31,6 +30,9 @@ const Profile = () => {
                     }
                 });
                 setUser(res.data.payload);
+                setFullname(res.data.payload.full_name)
+                setBio(res.data.payload.bio)
+                setUsername(res.data.payload.username)
             } catch(error) {
                 setUser([]);
             }
@@ -58,17 +60,6 @@ const Profile = () => {
                         <p>{user.bio}</p>
                     </div>
                 </section>
-                {/* <div>
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Edit Your Information</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>Edit Your Information</Modal.Body>
-                        <Modal.Footer>
-                            <Button className = 'modalButton' variant="secondary"></Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div> */}
             </div>
         )
     }
@@ -92,21 +83,31 @@ const Profile = () => {
                 <div className="profileInfo">
                     {displayUser()}
                     <div>
-                    <div>
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Edit Your Information</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <input className="edit_input" type="text" placeholder="Full Name" onChange={(e) => setFullname(e.target.value)} value={full_name} />
-                            <input className="edit_input" type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
-                            <input className="edit_input" type="text" placeholder="Bio" onChange={(e) => setBio(e.target.value)} value={bio} />
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button className="modalButton" variant="secondary">Save</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
+                        <div>
+                            <Modal show={show} onHide={handleClose}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Edit Your Information</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <input className="mb-2 edit_input" type="text" placeholder={user.name ? <div className='ifExists'>user.name</div> : "Enter Full Name"} onChange={(e) => setFullname(e.target.value)} value={full_name} />
+                                    <Form.Row>
+                                        <InputGroup className="mb-2">
+                                        <InputGroup.Prepend>
+                                            <InputGroup.Text id="inputGroup-sizing-sm">@</InputGroup.Text>
+                                        </InputGroup.Prepend>
+                                        <input className="edit_input username_input" type="text" placeholder={user.username ? user.username : "Enter Username"} onChange={(e) => setUsername(e.target.value)} value={username} />
+                                        </InputGroup>
+                                    </Form.Row>
+                                    <input className="mb-2 edit_input" type="text" placeholder={user.bio ? user.bio : "Enter Bio"} onChange={(e) => setBio(e.target.value)} value={bio} />
+                                    <Form.Group>
+                                        <Form.File id="exampleFormControlFile1" label="Example file input" />
+                                    </Form.Group>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button className="modalButton" variant="secondary">Save</Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </div>
                     </div>
                 </div>
                 <div className="userAlbumDiv">
