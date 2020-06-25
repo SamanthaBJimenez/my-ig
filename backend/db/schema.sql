@@ -14,6 +14,7 @@ CREATE TABLE Users (
     username VARCHAR UNIQUE,
     password TEXT,
     full_name TEXT,
+    bio TEXT,
     email TEXT UNIQUE
 );
 
