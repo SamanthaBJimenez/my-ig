@@ -64,4 +64,20 @@ const getSingleUserByEmail = async (req, res, next) => {
     }
 }
 
-module.exports = {getAllUsers, createNewUser, getSingleUserById, getSingleUserByEmail};
+const updateSingleUser = async (req, res, next) =>{
+    try{
+        let updateUser = await db.one(`UPDATE Users SET username = ${req.params.username}, full_name = ${req.params.full_name}, bio = ${req.params.bio} WHERE id = ${req.params.id} RETURNING *`)
+        res.status(200).json({
+            status: 'success',
+            message: 'user updated',
+            payload: updateUser
+        })
+    } catch(error){
+        res.status(400).json({
+            status: 'error',
+            message: 'could not update user'
+        })
+    }
+}
+
+module.exports = {getAllUsers, createNewUser, getSingleUserById, getSingleUserByEmail, updateSingleUser};
