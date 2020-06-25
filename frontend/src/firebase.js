@@ -24,4 +24,6 @@ const config = {
 
 app.initializeApp(config);
 
-export default app;
+const storage = app.storage();
+
+export { storage, app as default };

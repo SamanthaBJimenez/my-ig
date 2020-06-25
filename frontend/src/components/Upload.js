@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { render } from 'react-dom';
 import { NavLink } from 'react-router-dom';
 import axios from "axios"
 import { apiURL } from '../util/apiURL';
@@ -7,98 +8,52 @@ import '../css/Upload.css';
 // import { storageRef } from '../firebase';
 // import { useInput } from '../util/useInput';
 import ig_logo from '../ImgFiles/ig_logo.png';
-import { storageRef } from '../util/firebaseFunctions';
+import { storage } from '../firebase';
 
 
 const Upload = () => {
     const API = apiURL();
-    const [file, setFile] = useState("");
-    // const [image, setImage] = useState("");
+    const [image, setImage] = useState(null);
+    const [url, setUrl] = useState("");
+    const [progress, setProgress] = useState(0);
+
     const [caption, setCaption] = useState("");
     const [hashtag, setHashtag] = useState("")
-    // let contentObj = useInput("");
-    // let hashtagObj=useInput("");
-    // const storage = app.storage();
 
-    const allInputs = {imgUrl: ''}
-    const [imageAsFile, setImageAsFile] = useState('')
-    const [imageAsUrl, setImageAsUrl] = useState(allInputs)
-
-    const handleImageAsFile = (e) => {
-        const image = e.target.files[0]
-        setImageAsFile(imageFile => (image))
+    const handleChange = (e) => {
+        if(e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
     }
 
-    const uploadImage = (e) => {
-        debugger
-        // let uploader = document.getElementById('uploader');
-        // e.preventDefault()
-        // console.log(storage);
-        // debugger;
-        // console.log('start of upload')
-        // // async magic goes here...
-        // if(imageAsFile === '') {
-        // console.error(`not an image, the image file is a ${typeof(imageAsFile)}`)
-        // }
-        // const uploadTask = storage.ref(`/images/${imageAsFile.name}`).put(imageAsFile)
-        // //initiates the firebase side uploading 
-        // uploadTask.on('state_changed', 
-        // (snapShot) => {
-        // //takes a snap shot of the process as it is happening
-        // console.log(snapShot)
-        // }, (err) => {
-        // //catches the errors
-        // console.log(err)
-        // }, () => {
-        // // gets the functions from storage refences the image storage in firebase by the children
-        // // gets the download url then sets the image from firebase as the value for the imgUrl key:
-        // storage.ref('images').child(imageAsFile.name).getDownloadURL()
-        // .then(fireBaseUrl => {
-        //     setImageAsUrl(prevObject => ({...prevObject, imgUrl: fireBaseUrl}))
-        // })
-        // })
+    console.log("image:", image);
 
-      
-      // Get the file from DOM
-    //   const file = document.getElementById("files");
-      console.log(file);
-      debugger
-      //dynamically set reference to the file name
-      var thisRef = storageRef.child(file);
-        debugger
-      //put request upload file to firebase storage
-      thisRef.put(file).then(function(snapshot) {
-         alert("File Uploaded")
-         console.log('Uploaded a blob or file!');
-         debugger
-      });
-
-
-
+    const handleUpload = (e) => {
+        e.preventDefault();
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                const progress = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                setProgress(progress);
+            },
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage
+                    .ref("images")
+                    .child(image.name)
+                    .getDownloadURL()
+                    .then(url => {
+                        setUrl(url);
+                        console.log(url);
+                    })
+            }
+        )
     }
-
-    // const checkType = (e) => {
-    //     let files = e.target.files;
-    //     let err = '';
-    //     const types = ['image/png', 'image/jpeg', 'image/gif'];
-    //     for (let x = 0; x < files.length; x++) {
-    //         if (types.every(type => files[x].type !== type)) {
-    //             err += files[x].type + ' is not a supported format';
-    //         }
-    //     }
-    //     if (err !== '') {
-    //         e.target.value = null;
-    //         alert(err);
-    //         return false;
-    //     }
-    //     return true;
-    // }
-
-    // const selectImage = (e) => {
-    //     if(checkType(e)) {
-    //         setFile(e.target.files[0]);
-    //     }
-    // }
 
     // const handleNewPost = async () => {
     //     debugger;
@@ -132,10 +87,10 @@ const Upload = () => {
             </nav>
             <div className="mainPage">
                 <div className="uploadDiv">
-                    <form onSubmit={uploadImage}>
+                    <form className="uploadForm">
                         <h3>Upload Image</h3>
-                        <progress value="0" max ="100" id="uploader">0%</progress>
-                        <input type="file" name="myImage" id="fileButton" /*onChange={handleImageAsFile}*/ value={file} onChange = {(e) => setFile(e.target.value)} />
+                        {progress === 100 ? <div>Image Uploaded!</div> : <progress value={progress} max ="100" id="uploader"/> }
+                        <input type="file" name="myImage" id="fileButton" onChange={handleChange} />
                         {/* <button type="submit">Upload</button> */}
                     {/* <label>
                         <input className="upload_input" type="text" placeholder="Caption" name="content" onChange={(e) => setCaption(e.target.value)} value={caption} />
@@ -144,8 +99,11 @@ const Upload = () => {
                         #
                         <input className="upload_input" type="text" placeholder="Hashtag" name="hashtag" onChange={(e) => setHashtag(e.target.value)} value={hashtag} />
                     </label> */}
-                    <button className="upload_button" type="submit">Post</button>
+                    <button className="upload_button" type="submit" onClick={handleUpload}>Post</button>
                     </form>
+                </div>
+                <div>
+                    {url? <img className="finalUpload" src={url} alt='firebase-image' width={500} height={500} /> : <div></div>}
                 </div>
             </div>
         </div>
@@ -153,3 +111,4 @@ const Upload = () => {
 }
 
 export default Upload;
+// render(<Upload/>, document.querySelector("#root"));
