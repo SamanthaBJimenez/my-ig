@@ -48,7 +48,7 @@ const Upload = () => {
                     .then(url => {
                         setUrl(url);
                         console.log(url);
-                    })
+                })
             }
         )
     }

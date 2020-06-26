@@ -27,10 +27,9 @@ const Feed = () => {
             //     }
             // });
             // setPhotos(res.data.payload);
-            const listRef = storageRef.child(`images/`);
+            const listRef = storageRef.child(`images/`)
             const firstPage = await listRef.list({ maxResults: 100});
             setPhotos(firstPage.items)
-            debugger
         } catch(error) {
             setPhotos([]);
         }
@@ -71,10 +70,12 @@ const Feed = () => {
     })
 
     const photosFeed = photos.map(photo => {
-        let source = `${photo.fullPath}`
-        console.log(photo.getDownloadUrl)
-        // debugger
-        return(<img src={source} width="500" height="500"/>)
+        let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
+        return(
+            <div className="content">
+                <img className='feedImg' src={source} />
+            </div>
+        )
         // return(<><PostImage key={photo.id} photoId={photo.id} avatar={photo.avatar} username={photo.username} filePath={photo.imageurl} caption={photo.caption}/></img>)
     })
 
@@ -93,11 +94,13 @@ const Feed = () => {
                     </div>
                 </div>
             </nav>
-            <div className="photosFeed">
-                {photosFeed}
-            </div>
-            <div className="profileFeed">
-                <DisplayUser/>
+            <div className='feedContent'>
+                <div className="photosFeed">
+                    {photosFeed}
+                </div>
+                <div className="profileFeed">
+                    <DisplayUser/>
+                </div>
             </div>
         </div>
     )
