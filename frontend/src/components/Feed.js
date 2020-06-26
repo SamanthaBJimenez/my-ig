@@ -8,14 +8,35 @@ import Search from './Search';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import '../css/Feed.css';
 import DisplayUser from './DisplayUser';
+import { storage } from '../firebase';
 
 const Feed = () => {
     const [photos, setPhotos] = useState([]);
     const API = apiURL();
     const { token } = useContext(AuthContext);
+    const storageRef = storage.ref();
     sessionStorage.searchTerm = '';
 
-    const fetchData = async (url) => {
+    const fetchPhotos = async () => {
+        try {
+            // let res = await axios({
+            //     method: "get",
+            //     url: url,
+            //     headers: {
+            //         'AuthToken': token
+            //     }
+            // });
+            // setPhotos(res.data.payload);
+            const listRef = storageRef.child(`images/`);
+            const firstPage = await listRef.list({ maxResults: 100});
+            setPhotos(firstPage.items)
+            debugger
+        } catch(error) {
+            setPhotos([]);
+        }
+    }
+
+    const fetchSearch = async (url) => {
         try {
             let res = await axios({
                 method: "get",
@@ -42,16 +63,19 @@ const Feed = () => {
 
     useEffect(() => {
         if(sessionStorage.searchTerm){
-            fetchData(`${API}/photos/hashtag/tag/${sessionStorage.searchTerm}`);
+            fetchSearch(`${API}/photos/hashtag/tag/${sessionStorage.searchTerm}`);
             searchResult();
         } else {
-            fetchData(`${API}/photos/`);
+            fetchPhotos();
         }
     })
 
     const photosFeed = photos.map(photo => {
-        debugger;
-        return(<><PostImage key={photo.id} photoId={photo.id} avatar={photo.avatar} username={photo.username} filePath={photo.imageurl} caption={photo.caption}/></>)
+        let source = `${photo.fullPath}`
+        console.log(photo.getDownloadUrl)
+        // debugger
+        return(<img src={source} width="500" height="500"/>)
+        // return(<><PostImage key={photo.id} photoId={photo.id} avatar={photo.avatar} username={photo.username} filePath={photo.imageurl} caption={photo.caption}/></img>)
     })
 
     return(
