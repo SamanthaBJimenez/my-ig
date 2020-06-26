@@ -275,3 +275,7 @@ transition: opacity .1s ease-out;
     object-fit: cover;
     margin-top: 20px;
 }
+
+.uploadInput {
+    margin: 10px 15px 8px 15px;
+}

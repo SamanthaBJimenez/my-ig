@@ -26,8 +26,6 @@ const Upload = () => {
         }
     }
 
-    console.log("image:", image);
-
     const handleUpload = (e) => {
         e.preventDefault();
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -90,7 +88,7 @@ const Upload = () => {
                     <form className="uploadForm">
                         <h3>Upload Image</h3>
                         {progress === 100 ? <div>Image Uploaded!</div> : <progress value={progress} max ="100" id="uploader"/> }
-                        <input type="file" name="myImage" id="fileButton" onChange={handleChange} />
+                        <input className="uploadInput" type="file" name="myImage" id="fileButton" onChange={handleChange} />
                         {/* <button type="submit">Upload</button> */}
                     {/* <label>
                         <input className="upload_input" type="text" placeholder="Caption" name="content" onChange={(e) => setCaption(e.target.value)} value={caption} />
