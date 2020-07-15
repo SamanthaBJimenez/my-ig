@@ -9,9 +9,13 @@ import ig_logo from '../ImgFiles/ig_logo.png';
 import '../css/Feed.css';
 import DisplayUser from './DisplayUser';
 import { storage } from '../firebase';
+import Comments from './Comments';
 
 const Feed = () => {
     const [photos, setPhotos] = useState([]);
+    const [username, setUsername] = useState("");
+    const [caption, setCaption] = useState("");
+    const [hashtag, setHashtag] = useState("");
     const API = apiURL();
     const { token } = useContext(AuthContext);
     const storageRef = storage.ref();
@@ -27,8 +31,10 @@ const Feed = () => {
             //     }
             // });
             // setPhotos(res.data.payload);
-            const listRef = storageRef.child(`images/`)
+            const listRef = storageRef.child(`images`)
             const firstPage = await listRef.list({ maxResults: 100});
+            console.log(firstPage.items)
+            debugger
             setPhotos(firstPage.items)
         } catch(error) {
             setPhotos([]);
@@ -45,7 +51,7 @@ const Feed = () => {
                 }
             });
             // debugger;
-            setPhotos(res.data.payload);
+            // setPhotos(res.data.payload);
             // debugger;
         } catch(error) {
             setPhotos([]);
@@ -66,17 +72,44 @@ const Feed = () => {
             searchResult();
         } else {
             fetchPhotos();
+
         }
     })
+    
+    // const getPhotoInfo = (image) => {
+    //     const uploadRef = storage.ref().child(`images/${image.name}`);
+
+    //     // Get metadata properties
+    //     uploadRef.getMetadata().then((metadata) => {
+    //         console.log("metadata: ", metadata)
+    //         console.log("customMetadata: ", metadata.customMetadata)
+    //         console.log("customMetadata username: ", metadata.customMetadata.poster_username)
+    //         setUsername(metadata.customMetadata.poster_username)
+    //         setCaption(metadata.customMetadata.caption)
+    //         setHashtag(metadata.customMetadata.hashtag)
+    //         // username = metadata.customMetadata.poster_username
+    //     }).catch(function(error) {
+    //         console.log(error)
+    //     });
+    // }
 
     const photosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
+        // debugger
+
+        
+        // getPhotoInfo(photo)
+        
         return(
             <div className="content">
+                <p>{username}</p>
+                <p>something here please</p>
                 <img className='feedImg' src={source} />
+                <p>{caption}</p>
+                <p>{hashtag}</p>
+                <Comments/>
             </div>
         )
-        // return(<><PostImage key={photo.id} photoId={photo.id} avatar={photo.avatar} username={photo.username} filePath={photo.imageurl} caption={photo.caption}/></img>)
     })
 
     return(

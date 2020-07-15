@@ -16,6 +16,7 @@ const DisplayUser = () =>{
             try {
                 let res = await axios.get(url)
                 setUser(res.data.payload)
+                sessionStorage.userName = res.data.payload.username
             } catch (error) {
                 setUser([])
             }

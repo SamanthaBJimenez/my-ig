@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { render } from 'react-dom';
+import React, { useState, useContext } from 'react'
+import { AuthContext } from '../providers/AuthProvider';
 import { NavLink } from 'react-router-dom';
 import axios from "axios"
 import { apiURL } from '../util/apiURL';
@@ -10,15 +10,35 @@ import '../css/Upload.css';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import { storage } from '../firebase';
 
-
 const Upload = () => {
     const API = apiURL();
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
+    const { token } = useContext(AuthContext);
+
 
     const [caption, setCaption] = useState("");
     const [hashtag, setHashtag] = useState("")
+
+    // const dbUpload = async () => {
+    //     try {
+    //         let res = await axios({
+    //             method: "post",
+    //             url: `${API}/photos/update/`,
+    //             headers: {
+    //                 'AuthToken': token
+    //             },
+    //             params: {
+    //                 'poster_id': sessionStorage.loggedUser, 
+    //                 'imageURL': image.name
+    //             }
+    //         });
+    //         debugger;
+    //     } catch(error) {
+    //         console.log(error)
+    //     }
+    // }
 
     const handleChange = (e) => {
         if(e.target.files[0]) {
@@ -27,7 +47,9 @@ const Upload = () => {
     }
 
     const handleUpload = (e) => {
+        debugger;
         e.preventDefault();
+        // postPhoto();
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
         uploadTask.on(
             "state_changed",
@@ -40,7 +62,7 @@ const Upload = () => {
             error => {
                 console.log(error);
             },
-            () => {
+            () => {        
                 storage
                     .ref("images")
                     .child(image.name)
@@ -50,8 +72,53 @@ const Upload = () => {
                         console.log(url);
                 })
             }
-        )
+        );
     }
+
+    const postPhoto = async (e) => {
+        debugger;
+        e.preventDefault();
+        try {
+            let res = await axios({
+                method: "post",
+                url: `${API}/photos/`,
+                headers: {
+                    'AuthToken': token,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'poster_id': sessionStorage.loggedUser, 
+                    'imageURL': `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${image.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`,
+                    'caption': caption
+                }),
+            });
+            // console.log(res.data)
+            // setImage(res.data.payload);
+            handleUpload(e)
+        } catch(error) {
+            setImage([]);
+        }
+    }
+
+    // const handleSubmit = async (e) => {
+    //     try {
+    //         let res = await axios({
+    //             method: 'post',
+    //             url: `${API}/photos/`,
+    //             headers: {
+    //                 'AuthToken': token
+    //             },
+    //             body: {
+    //                 'poster_id': sessionStorage.loggedUser, 
+    //                 'imageURL': image.name,
+    //                 'caption': null
+    //             }
+    //         });
+    //         debugger;
+    //     } catch(error) {
+    //         console.log(error)
+    //     }
+    // }
 
     // const handleNewPost = async () => {
     //     debugger;
@@ -89,15 +156,14 @@ const Upload = () => {
                         <h3>Upload Image</h3>
                         {progress === 100 ? <div>Image Uploaded!</div> : <progress value={progress} max ="100" id="uploader"/> }
                         <input className="uploadInput" type="file" name="myImage" id="fileButton" onChange={handleChange} />
-                        {/* <button type="submit">Upload</button> */}
                     {/* <label>
                         <input className="upload_input" type="text" placeholder="Caption" name="content" onChange={(e) => setCaption(e.target.value)} value={caption} />
-                    </label> */}
-                    {/* <label>
+                    </label>
+                    <label>
                         #
                         <input className="upload_input" type="text" placeholder="Hashtag" name="hashtag" onChange={(e) => setHashtag(e.target.value)} value={hashtag} />
                     </label> */}
-                    <button className="upload_button" type="submit" onClick={handleUpload}>Post</button>
+                    <button className="upload_button" type="submit" onClick={postPhoto}>Post</button>
                     </form>
                 </div>
                 <div>
@@ -109,4 +175,3 @@ const Upload = () => {
 }
 
 export default Upload;
-// render(<Upload/>, document.querySelector("#root"));

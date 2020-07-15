@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import Hashtags from './Hashtags';
 // import Comments from './Comments';
 // import '../css/Image.css';
 
 
 const Image = ({  filePath, username, avatar, caption, photoId }) => {
+    // const [comment, setComment] = useState("");
    
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         // let res = await signUp(email, password);
+    //         // await axios.post(`${API}/users/`, { id: res.user.uid, username, password, full_name, email }); 
+    //         // sessionStorage.loggedUser = res.user.uid
+    //         // history.push("/home")
+    //     } catch(err) {
+    //         console.log(err);
+    //     }
+
+    // }
+
     return(
         <div className="photoStream">
             <div title={photoId} className="imageDiv">
