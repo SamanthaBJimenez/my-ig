@@ -34,7 +34,7 @@ const Feed = () => {
             const listRef = storageRef.child(`images`)
             const firstPage = await listRef.list({ maxResults: 100});
             console.log(firstPage.items)
-            debugger
+            // debugger
             setPhotos(firstPage.items)
         } catch(error) {
             setPhotos([]);
@@ -96,18 +96,14 @@ const Feed = () => {
     const photosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
         // debugger
-
-        
         // getPhotoInfo(photo)
-        
         return(
             <div className="content">
                 <p>{username}</p>
-                <p>something here please</p>
                 <img className='feedImg' src={source} />
                 <p>{caption}</p>
                 <p>{hashtag}</p>
-                <Comments/>
+                <Comments photo_id={photo.name}/>
             </div>
         )
     })

@@ -11,7 +11,7 @@ photosRouter.get('/hashtag/tag/:hashtag', getPhotosByHashtag);
 photosRouter.get('/hashtag/all', getAllHashtags);
 photosRouter.get('/hashtag/id/:photo_id', getHashtagsByPhoto);
 photosRouter.post('/hashtag/', addNewHashtag)
-photosRouter.get('/comments/:photo_id', getCommentsByPhoto);
-photosRouter.post('/comments', addNewComment);
+photosRouter.get('/comments/:photo_id', checkFirebaseToken, getCommentsByPhoto);
+photosRouter.post('/comments', checkFirebaseToken, addNewComment);
 
 module.exports = photosRouter;
