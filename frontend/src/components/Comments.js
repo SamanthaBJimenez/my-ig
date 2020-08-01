@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../providers/AuthProvider';
 import { apiURL } from '../util/apiURL';
-// import '../css/Comments.css';
+import '../css/Comments.css';
 
 
 const Comments = ({photo_id}) => {
@@ -14,28 +14,13 @@ const Comments = ({photo_id}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(e.target[0].value)
-            console.log(token);
-            console.log(photo_id);
-            console.log(sessionStorage.userName);
-            console.log(`${API}/photos/comments`);
-            debugger
-            let data = {
+            await axios.post(`${API}/photos/comments`, {
                 commenter_name: sessionStorage.userName,
                 photo_id: photo_id,
                 comment: e.target[0].value
-            }
-            let res = await axios({
-                method: 'post',
-                url: `${API}/photos/comments`,
-                headers: {
-                    'AuthToken': token
-                },
-                body: JSON.stringify(data)
             });
-            console.log(res.data.payload);
-        } catch(error) {
-            alert(error.message)
+        } catch (err) {
+            alert(err.message);
         }
     }
 
@@ -59,9 +44,10 @@ const Comments = ({photo_id}) => {
     })
 
     const allComments = photoComments.map(comment => {
+        debugger
         return(
             <div className="content">
-                <p>{comment.commenter_name}</p>
+                <p className="commenterNameP">{comment.commenter_name}</p>
                 <p>{comment.comment}</p>
                 <p>{comment.time_stamp}</p>
             </div>

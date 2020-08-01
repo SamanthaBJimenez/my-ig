@@ -170,6 +170,7 @@ const addNewComment = async (req, res, next) => {
             payload: newComment
         })
     } catch(error) {
+        console.log(req);
         res.status(400).json({
             status: 'error',
             message: 'could not create new comment'

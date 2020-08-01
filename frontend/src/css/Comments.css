@@ -1,0 +1,10 @@
+.content {
+    text-align: initial;
+    padding-left: 20px;
+    font-size: 14px;
+    display: inline-grid;
+}
+
+.commenterNameP {
+    font-weight: bold;
+}
