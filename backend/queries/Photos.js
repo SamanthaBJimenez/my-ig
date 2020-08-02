@@ -50,12 +50,14 @@ const getOnePhoto = async (req, res, next) => {
 }
 
 const addNewPhoto = async (req, res, next) => {
+    const { poster_id, imageURL, caption } = req.body;
+    
     try {
-        let newPhoto = await db.one(`INSERT INTO Photos (poster_id, imageURL, caption) VALUES('${req.body.poster_id}', '${req.body.imageURL}', '${req.body.caption}') RETURNING *`);
+        let newPhoto = await db.none(`INSERT INTO Photos (poster_id, imageURL, caption) VALUES($1, $2, $3)`, [poster_id, imageURL, caption]);
         res.status(200).json({
             status: 'success',
             message: 'posted new photo',
-            payload: newPhoto
+            // payload: newPhoto
         });
     } catch(error) {
         res.status(400).json({

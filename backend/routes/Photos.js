@@ -5,7 +5,7 @@ const { checkFirebaseToken } = require('../middleware/auth');
 photosRouter.get('/', checkFirebaseToken, getAllPhotos);
 photosRouter.get('/profile/:poster_id', getPhotosByUser)
 photosRouter.get('/:id', getOnePhoto);
-photosRouter.post('/', addNewPhoto);
+photosRouter.post('/', checkFirebaseToken, addNewPhoto);
 photosRouter.delete('/:id', deletePhoto);
 photosRouter.get('/hashtag/tag/:hashtag', getPhotosByHashtag);
 photosRouter.get('/hashtag/all', getAllHashtags);

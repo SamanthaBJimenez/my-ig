@@ -12,7 +12,7 @@ import { storage } from '../firebase';
 
 const Upload = () => {
     const API = apiURL();
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState([]);
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
     const { token } = useContext(AuthContext);
@@ -41,6 +41,7 @@ const Upload = () => {
     // }
 
     const handleChange = (e) => {
+        debugger
         if(e.target.files[0]) {
             setImage(e.target.files[0]);
         }
@@ -92,6 +93,7 @@ const Upload = () => {
                     'caption': caption
                 }),
             });
+
             // console.log(res.data)
             // setImage(res.data.payload);
             handleUpload(e)
@@ -155,15 +157,15 @@ const Upload = () => {
                     <form className="uploadForm">
                         <h3>Upload Image</h3>
                         {progress === 100 ? <div>Image Uploaded!</div> : <progress value={progress} max ="100" id="uploader"/> }
-                        <input className="uploadInput" type="file" name="myImage" id="fileButton" onChange={handleChange} />
-                    {/* <label>
-                        <input className="upload_input" type="text" placeholder="Caption" name="content" onChange={(e) => setCaption(e.target.value)} value={caption} />
-                    </label>
-                    <label>
-                        #
-                        <input className="upload_input" type="text" placeholder="Hashtag" name="hashtag" onChange={(e) => setHashtag(e.target.value)} value={hashtag} />
-                    </label> */}
-                    <button className="upload_button" type="submit" onClick={postPhoto}>Post</button>
+                        <input className="uploadInput" type="file" name="myImage" id="fileButton" onChange={handleChange}/>
+                        {/* <label>
+                            <input className="upload_input" type="text" placeholder="Caption" name="content" onChange={(e) => setCaption(e.target.value)} value={caption} />
+                        </label>
+                        <label>
+                            #
+                            <input className="upload_input" type="text" placeholder="Hashtag" name="hashtag" onChange={(e) => setHashtag(e.target.value)} value={hashtag} />
+                        </label> */}
+                        <button className="upload_button" type="submit" onClick={postPhoto}>Post</button>
                     </form>
                 </div>
                 <div>
