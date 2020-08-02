@@ -98,7 +98,7 @@ const Feed = () => {
         // debugger
         // getPhotoInfo(photo)
         return(
-            <div className="content">
+            <div className="feedImgContent">
                 <p>{username}</p>
                 <img className='feedImg' src={source} />
                 <p>{caption}</p>
