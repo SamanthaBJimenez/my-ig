@@ -11,19 +11,6 @@ const Comments = ({photo_id}) => {
     const { token } = useContext(AuthContext);
     const API = apiURL();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.post(`${API}/photos/comments`, {
-                commenter_name: sessionStorage.userName,
-                photo_id: photo_id,
-                comment: e.target[0].value
-            });
-        } catch (err) {
-            alert(err.message);
-        }
-    }
-
     const fetchComments = async () => {
         try {
             let res = await axios({
@@ -38,18 +25,34 @@ const Comments = ({photo_id}) => {
             setPhotoComments([]);
         }
     }
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        debugger
+        try {
+            debugger
+            await axios.post(`${API}/photos/comments`, {
+                commenter_name: sessionStorage.userName,
+                photo_id: photo_id,
+                comment: comment
+            });
+            fetchComments();
+        } catch (err) {
+            alert(err.message);
+        }
+    }
 
     useEffect(() => {
         fetchComments();
     })
 
     const allComments = photoComments.map(comment => {
-        debugger
+        // debugger
         return(
             <div className="content">
                 <p className="commenterNameP">{comment.commenter_name}</p>
-                <p>{comment.comment}</p>
-                <p>{comment.time_stamp}</p>
+                <p className="commentContent">{comment.comment}</p>
+                {/* <p className="commentContent">{comment.time_stamp}</p> */}
             </div>
         )
     })
@@ -58,8 +61,9 @@ const Comments = ({photo_id}) => {
         <div className="commentsStream">
             <div className="photosComments">{allComments}</div>
             <form className="commentForm" onSubmit={handleSubmit}>
-                <input className="comment_input" type="text" placeholder="comment" onChange={(e) => setComment(e.target.value)} value={comment} autoComplete="on" />
-                <button className="comment_button" type="submit">submit</button>
+                <input className="comment_input" type="text" placeholder="Add a comment..." onChange={(e) => setComment(e.target.value)} value={comment} autoComplete="on" />
+                {/* <input  type="button" value="post" onClick={handleSubmit}/> */}
+                <button className="comment_button" type="button" onClick={handleSubmit}>Post</button>
             </form>            
         </div>
     )
