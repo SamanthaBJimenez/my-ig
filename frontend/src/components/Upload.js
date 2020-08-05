@@ -71,7 +71,7 @@ const Upload = () => {
                     .then(url => {
                         setUrl(url);
                         console.log(url);
-                })
+                    })
             }
         );
     }
@@ -87,11 +87,11 @@ const Upload = () => {
                     'AuthToken': token,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
+                data: {
                     'poster_id': sessionStorage.loggedUser, 
                     'imageURL': `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${image.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`,
                     'caption': caption
-                }),
+                },
             });
 
             // console.log(res.data)

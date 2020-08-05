@@ -36,6 +36,7 @@ const Comments = ({photo_id}) => {
                 photo_id: photo_id,
                 comment: comment
             });
+            setComment("");
             fetchComments();
         } catch (err) {
             alert(err.message);
@@ -52,7 +53,6 @@ const Comments = ({photo_id}) => {
             <div className="content">
                 <p className="commenterNameP">{comment.commenter_name}</p>
                 <p className="commentContent">{comment.comment}</p>
-                {/* <p className="commentContent">{comment.time_stamp}</p> */}
             </div>
         )
     })
@@ -62,8 +62,7 @@ const Comments = ({photo_id}) => {
             <div className="photosComments">{allComments}</div>
             <form className="commentForm" onSubmit={handleSubmit}>
                 <input className="comment_input" type="text" placeholder="Add a comment..." onChange={(e) => setComment(e.target.value)} value={comment} autoComplete="on" />
-                {/* <input  type="button" value="post" onClick={handleSubmit}/> */}
-                <button className="comment_button" type="button" onClick={handleSubmit}>Post</button>
+                <input className="comment_button" type="button" value="Post" onClick={handleSubmit} disabled={comment ? false : true}/>
             </form>            
         </div>
     )
