@@ -19,7 +19,7 @@
     outline: none;
 }
     
-    .profileDiv {
+.profileDiv {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -40,9 +40,9 @@
     box-sizing: content-box;
     width: calc(100% - 40px);
     padding: 30px 20px 0;
-    }
+}
     
-    .profileInfo {
+.profileInfo {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -59,9 +59,9 @@
     -webkit-box-direction: normal;
     flex-direction: row;
     margin-bottom: 44px;
-    }
+}
     
-    .profile_username {
+.profile_username {
     -webkit-box-direction: normal;
     padding: 0;
     border: 0;
@@ -76,9 +76,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    }
+}
     
-    .prof_section {
+.prof_section {
     font: inherit;
     vertical-align: baseline;
     -webkit-box-align: stretch;
@@ -98,9 +98,9 @@
     flex-basis: 30px;
     -webkit-box-flex: 2;
     flex-grow: 2;
-    }
+}
     
-    .prof_header {
+.prof_header {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -118,9 +118,9 @@
     flex-shrink: 1;
     min-width: 0;
     margin-bottom: 20px;
-    }
+}
     
-    .prof_info {
+.prof_info {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -139,29 +139,12 @@
     font-size: 16px;
     line-height: 24px;
     word-wrap: break-word;
-    }
+}
     
-    .userAlbumDiv {
-        color: rgba(var(--i1d,38,38,38),1);
-        font: inherit;
-        vertical-align: baseline;
-        -webkit-box-align: stretch;
-        align-items: stretch;
-        border: 0 solid #000;
-        box-sizing: border-box;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        flex-direction: column;
-        flex-shrink: 0;
-        margin: 0;
-        padding: 0;
-        position: relative;
-    }
-    
-    .outer_profile_div {
-    /* color: rgba(var(--i1d,38,38,38),1);
+.userAlbumDiv {
+    color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
+    vertical-align: baseline;
     -webkit-box-align: stretch;
     align-items: stretch;
     border: 0 solid #000;
@@ -174,34 +157,15 @@
     margin: 0;
     padding: 0;
     position: relative;
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    -webkit-box-ordinal-group: 5;
-    order: 4;
-    background-color: rgba(var(--b3f,250,250,250),1);
-    margin-top: 100px; */
+}
     
-        background-color: #FAFAFA;
-        display: flex;
-        margin-top: 3%;
-    }
+.outer_profile_div {
+    background-color: #FAFAFA;
+    display: flex;
+    margin-top: 3%;
+}
     
-    .navbar {
-        /* box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
-        position: fixed;
-        top: 0;
-        width: 100%;
-        align-items: center;
-        height: 54px;
-        flex-direction: row;
-        justify-content: space-evenly;
-        background-color: white;
-        z-index: 2; */
-    
-    
+.navbar {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -224,53 +188,40 @@
     -webkit-box-align: center;
     align-items: center;
     height: 54px;
-    }
+}
     
-    .igImg {
-        /* position: relative;
-        height: 29px;
-        width: 103px; */
+.igImg {
+    width: 95px;
+}
+
+.search {
+    cursor: text;
+    padding: 7px;
+}
     
-        width: 95px;
-    }
+.links {
+    color: rgba(var(--fe0,0,55,107),1);
+    font: inherit;
+    vertical-align: baseline;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    align-content: stretch;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+}
     
-    /* .imageDiv {
-        margin-top: 10%;
-        position: relative;
-        left: 38%;
-        border: 1px solid rgba(var(--b6a,219,219,219),1);
-        width: 660px;
-        background-color: white;
-    } */
-    
-    .search {
-        cursor: text;
-        padding: 7px;
-    }
-    
-    .links {
-        color: rgba(var(--fe0,0,55,107),1);
-        font: inherit;
-        vertical-align: baseline;
-        border: 0 solid #000;
-        box-sizing: border-box;
-        display: flex;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        align-content: stretch;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        flex-direction: row;
-        -webkit-box-pack: start;
-        justify-content: flex-start;
-        -webkit-box-flex: 0;
-        flex: 0 0 auto;
-    }
-    
-    .midNavDiv {
+.midNavDiv {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -292,29 +243,28 @@
     width: 100%;
     height: 54px;
     padding: 0 20px;
-    }
+}
     
-    .ig_logo {
-        color: rgba(var(--fe0,0,55,107),1);
-        font: inherit;
-        vertical-align: baseline;
-        border: 0 solid #000;
-        box-sizing: border-box;
-        display: flex;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        align-content: stretch;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        flex-direction: row;
-        -webkit-box-pack: start;
-        justify-content: flex-start;
-        -webkit-box-flex: 0;
-        flex: 0 0 auto;
-    
+.ig_logo {
+    color: rgba(var(--fe0,0,55,107),1);
+    font: inherit;
+    vertical-align: baseline;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    align-content: stretch;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
     color: rgba(var(--fe0,0,55,107),1);
     font: inherit;
     vertical-align: baseline;
@@ -332,31 +282,31 @@
     position: relative;
     margin-top: 7px;
     transition: opacity .1s ease-out;
-    }
+}
     
-    .home {
-        content: url("../ImgFiles/home_empty.png");
-        width: 20px;
-        margin-left: 22px; 
-    }
+.home {
+    content: url("../ImgFiles/home_empty.png");
+    width: 20px;
+    margin-left: 22px; 
+}
     
-    .home_selected {
-        content: url("../ImgFiles/home_full.png");
-        width: 20px;
-        margin-left: 22px; 
-    }
+.home_selected {
+    content: url("../ImgFiles/home_full.png");
+    width: 20px;
+    margin-left: 22px; 
+}
     
-    .profile {
-        content: url("../ImgFiles/user_empty.png");
-        width: 20px;
-        margin-left: 22px; 
-    }
+.profile {
+    content: url("../ImgFiles/user_empty.png");
+    width: 20px;
+    margin-left: 22px; 
+}
     
-    .profile_selected {
-        content: url("../ImgFiles/user_full.png");
-        width: 20px;
-        margin-left: 22px;
-    }
+.profile_selected {
+    content: url("../ImgFiles/user_full.png");
+    width: 20px;
+    margin-left: 22px;
+}
 
 .edit_input {
     background: rgba(var(--b3f,250,250,250),1);
@@ -426,99 +376,47 @@
 
 .form-control {
     -webkit-tap-highlight-color: transparent;
---blue: #007bff;
---indigo: #6610f2;
---purple: #6f42c1;
---pink: #e83e8c;
---red: #dc3545;
---orange: #fd7e14;
---yellow: #ffc107;
---green: #28a745;
---teal: #20c997;
---cyan: #17a2b8;
---white: #fff;
---gray: #6c757d;
---gray-dark: #343a40;
---primary: #007bff;
---secondary: #6c757d;
---success: #28a745;
---info: #17a2b8;
---warning: #ffc107;
---danger: #dc3545;
---light: #f8f9fa;
---dark: #343a40;
---breakpoint-xs: 0;
---breakpoint-sm: 576px;
---breakpoint-md: 768px;
---breakpoint-lg: 992px;
---breakpoint-xl: 1200px;
---font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
---font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-box-sizing: border-box;
-margin: 0;
-font-family: inherit;
-overflow: visible;
-display: block;
-height: calc(1.5em + .75rem + 2px);
-padding: .375rem .75rem;
-font-size: 1rem;
-font-weight: 400;
-line-height: 1.5;
-color: #495057;
-background-color: #fff;
-background-clip: padding-box;
-border: 1px solid #ced4da;
-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-position: relative;
-flex: 1 1 auto;
-width: 1%;
-min-width: 0;
-margin-bottom: 0;
-border-top-right-radius: 0;
-border-bottom-right-radius: 0;
-border-top-left-radius: 0;
-border-bottom-left-radius: 0;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: inherit;
+    overflow: visible;
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    margin-bottom: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .input-group-pretend {
     -webkit-tap-highlight-color: transparent;
---blue: #007bff;
---indigo: #6610f2;
---purple: #6f42c1;
---pink: #e83e8c;
---red: #dc3545;
---orange: #fd7e14;
---yellow: #ffc107;
---green: #28a745;
---teal: #20c997;
---cyan: #17a2b8;
---white: #fff;
---gray: #6c757d;
---gray-dark: #343a40;
---primary: #007bff;
---secondary: #6c757d;
---success: #28a745;
---info: #17a2b8;
---warning: #ffc107;
---danger: #dc3545;
---light: #f8f9fa;
---dark: #343a40;
---breakpoint-xs: 0;
---breakpoint-sm: 576px;
---breakpoint-md: 768px;
---breakpoint-lg: 992px;
---breakpoint-xl: 1200px;
---font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
---font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-font-size: 1rem;
-font-weight: 400;
-line-height: 1.5;
-color: #212529;
-text-align: left;
-box-sizing: border-box;
-display: flex;
-margin-right: -1px;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    box-sizing: border-box;
+    display: flex;
+    margin-right: -1px;
 }
 
 .input-group-text {
@@ -550,23 +448,15 @@ margin-right: -1px;
     visibility: hidden;
 }
 
-/* .progress_div {
-    background: rgba(255,255,255,0.1);
-    justify-content: flex-start;
-    border-radius: 100px;
-    align-items: center;
-    position: relative;
-    padding: 0 5px;
-    display: flex;
-    height: 40px;
-    width: 500px;
-} */
+.avatarUpload {
+    width: 10%;
+    height: auto;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
 
-/* #uploader{
-    animation: load 3s normal forwards;
-    box-shadow: 0 10px 40px -10px blue;
-    border-radius: 100px;
-    background: blue;
-    height: 30px;
-    width: 0;
-} */
+.prof_avatar {
+    width: 45%;
+}
