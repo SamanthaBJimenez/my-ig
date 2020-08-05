@@ -15,7 +15,8 @@ CREATE TABLE Users (
     password TEXT,
     full_name TEXT,
     bio TEXT,
-    email TEXT UNIQUE
+    email TEXT UNIQUE,
+    avatar VARCHAR
 );
 
 CREATE TABLE Photos (
