@@ -64,9 +64,11 @@ const getSingleUserByEmail = async (req, res, next) => {
     }
 }
 
-const updateSingleUser = async (req, res, next) =>{
+const updateSingleUser = async (req, res, next) =>{    
+    const { username, full_name, bio, email, avatar } = req.body;
+    const { id } = req.params;
     try{
-        let updateUser = await db.one(`UPDATE Users SET full_name = ${req.params.full_name}, bio = ${req.params.bio} WHERE id = ${req.params.id} RETURNING *`)
+        let updateUser = await db.one(`UPDATE Users SET username = $1, full_name = $2, bio = $3, email = $4, avatar = $5 WHERE id = $6`, [username, full_name, bio, email, avatar, id])
         res.status(200).json({
             status: 'success',
             message: 'user updated',

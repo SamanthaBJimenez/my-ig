@@ -6,6 +6,6 @@ users.get('/', /*checkFirebaseToken,*/ getAllUsers);
 users.post('/', createNewUser);
 users.get('/id/:id', getSingleUserById);
 users.get('/email/:email', getSingleUserByEmail);
-users.patch('/update/:id', updateSingleUser);
+users.put('/update/:id', checkFirebaseToken, updateSingleUser);
 
 module.exports = users;

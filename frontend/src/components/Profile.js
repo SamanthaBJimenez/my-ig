@@ -16,19 +16,20 @@ const Profile = () => {
     let [user, setUser] = useState([]);
     const [show, setShow] = useState(false);
     const [full_name, setFullname] = useState(user.full_name);
-    // const [username, setUsername] = useState(user.username);
+    const [email, setEmail] = useState(user.email);
+    const [username, setUsername] = useState(user.username);
     const [bio, setBio] = useState(user.bio);
-    const [avatar, setAvatar] = useState(null);
+    const [avatar, setAvatar] = useState("");
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
     const API = apiURL();
 
     useEffect(() => {
-        const getUserInfo = async (url) => {
+        const getUserInfo = async (userUrl) => {
             try {
                 let res = await axios({
                     method: "get",
-                    url: url,
+                    url: userUrl,
                     headers: {
                         'AuthToken': token
                     }
@@ -36,7 +37,9 @@ const Profile = () => {
                 setUser(res.data.payload);
                 setFullname(res.data.payload.full_name)
                 setBio(res.data.payload.bio)
-                // setUsername(res.data.payload.username)
+                setUsername(res.data.payload.username)
+                setAvatar(res.data.payload.avatar)
+                setEmail(res.data.payload.email)
             } catch(error) {
                 setUser([]);
             }
@@ -53,32 +56,40 @@ const Profile = () => {
 
     const handleUpload = (e) => {
         e.preventDefault();
-        const uploadTask = storage.ref(`avatars/${avatar.name}`).put(avatar);
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                setProgress(progress);
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage
-                    .ref("avatars")
-                    .child(avatar.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        setUrl(url);
-                        console.log(url);
-                    })
-            }
-        )
+        if(avatar !== "") {
+            const uploadTask = storage.ref(`avatars/${avatar.name}`).put(avatar);
+            uploadTask.on(
+                "state_changed",
+                snapshot => {
+                    const progress = Math.round(
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    );
+                    setProgress(progress);
+                },
+                error => {
+                    console.log(error);
+                },
+                () => {
+                    storage
+                        .ref("avatars")
+                        .child(avatar.name)
+                        .getDownloadURL()
+                        .then(url => {
+                            setUrl(url);
+                            console.log("The URL is ", url);
+                        })
+                }
+            )
+            handleEdit();
+        } else {
+            handleEdit();
+        }
     }
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        window.location.reload(true);
+    };
 
     const handleShow = () => setShow(true);
 
@@ -86,20 +97,23 @@ const Profile = () => {
         debugger;
         try {
             let res = await axios({
-                method: "patch",
+                method: "put",
                 url: `${API}/users/update/${sessionStorage.loggedUser}`,
                 headers: {
-                    'AuthToken': token
+                    'AuthToken': token,
+                    'Content-Type': 'application/json'
                 },
-                params: {
+                data: {
+                    'username': username,
                     'full_name': full_name,
-                    'bio': bio
+                    'bio': bio,
+                    'email': email,
+                    'avatar': `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/avatars%2F${avatar.name}?alt=media&token=62e3e06a-6cb0-4a86-8cae-3823acf1ecdf`
                 }
             });
-            // let res = await axios.patch(`${API}/users/update/${sessionStorage.loggedUser}`, { full_name, bio }); 
-            // setShow(false);
-            debugger;
+            handleClose();
         } catch(error) {
+            handleClose();
             console.log(error)
         }
     }
@@ -114,11 +128,16 @@ const Profile = () => {
                         <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink>
                     </div>
                     <div className="prof_avatar">
-                        {url? <img className="finalUpload" src={url} alt='avatar_upload' width={500} height={500} /> : <div></div>}
+                        {avatar ? <img className="avatarUpload" src={avatar} alt='avatar_upload' /> : <div></div>}
                     </div>
                     <div className="prof_info">
-                        <p>{user.name}</p>
-                        <p>{user.bio}</p>
+                        <div className="usernameDiv">
+                            <p className="usernameP">{user.name}</p>
+                        </div>
+                        <div>
+                            <p>{user.full_name}</p>
+                            <p>{user.bio}</p>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -160,7 +179,10 @@ const Profile = () => {
                                             <input className="edit_input username_input" type="text" placeholder={user.username ? user.username : "Enter Username"} onChange={(e) => setUsername(e.target.value)} value={username} />
                                             </InputGroup>
                                         </Form.Row> */}
-                                        <input className="mb-2 edit_input" type="text" placeholder={user.bio ? user.bio : "Enter Bio"} onChange={(e) => setBio(e.target.value)} value={user.bio ? user.bio : undefined} />
+                                        <input className="mb-2 edit_input" type="text" placeholder={user.email ? user.email : "Enter Email"} onChange={(e) => setEmail(e.target.value)} value={email} />
+                                        <input className="mb-2 edit_input" type="text" placeholder={user.username ? user.username : "Enter Username"} onChange={(e) => setUsername(e.target.value)} value={username} />
+                                        <input className="mb-2 edit_input" type="text" placeholder={user.bio ? user.bio : "Enter Bio"} onChange={(e) => setBio(e.target.value)} value={bio} />
+                                        {user.avatar!==null ? <img className="finalUpload" src={user.avatar} alt='firebase-image' width={500} height={500} /> : <div></div>}
                                         <Form.Group>
                                             <div className="progress_div">
                                                 {progress === 100 ? <div className="upload_blurb">Image Uploaded!</div> : <progress value={progress} max="100" id="uploader"/> }
