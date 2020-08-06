@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-// import UserPhotoAlbum from './UserPhotoAlbum';
+import UserPhotoAlbum from './UserPhotoAlbum.js';
 import Search from './Search';
 import { logout } from '../util/firebaseFunctions';
 import { apiURL } from '../util/apiURL';
@@ -22,6 +22,7 @@ const Profile = () => {
     const [avatar, setAvatar] = useState("");
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
+    // const [photoAmount, setPhotoAmount] = useState(0);
     const API = apiURL();
 
     useEffect(() => {
@@ -86,6 +87,10 @@ const Profile = () => {
         }
     }
 
+    // const handlePhotoAmountChange = () => {
+    //     setPhotoAmount();
+    // };
+
     const handleClose = () => {
         setShow(false);
         window.location.reload(true);
@@ -121,22 +126,25 @@ const Profile = () => {
     const displayUser = () => {
         return(
             <div className="displayLoggedUser">
+                <div className="prof_avatar">
+                    {avatar ? <img className="avatarUpload" src={avatar} alt='avatar_upload' /> : <div></div>}
+                </div>
                 <section className="prof_section">
                     <div className="prof_header">
                         <h1 className="profile_username">{user.username}</h1>
                         <button className="profile_btn" onClick = {handleShow}>Edit Profile</button>
                         <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink>
                     </div>
-                    <div className="prof_avatar">
-                        {avatar ? <img className="avatarUpload" src={avatar} alt='avatar_upload' /> : <div></div>}
+                    <div>
+                        {/* <p>{photoCount}</p> */}
                     </div>
                     <div className="prof_info">
                         <div className="usernameDiv">
                             <p className="usernameP">{user.name}</p>
                         </div>
-                        <div>
-                            <p>{user.full_name}</p>
-                            <p>{user.bio}</p>
+                        <div className="infoDiv">
+                            <p className="fullNameP">{user.full_name}</p>
+                            <p className="bioP">{user.bio}</p>
                         </div>
                     </div>
                 </section>
@@ -199,7 +207,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="userAlbumDiv">
-                    {/* <UserPhotoAlbum/> */}
+                    <UserPhotoAlbum /*onChange={handlePhotoAmountChange}*/ />
                 </div>
             </div>
         </div>

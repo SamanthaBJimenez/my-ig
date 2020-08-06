@@ -3,7 +3,7 @@ const {getAllPhotos, getPhotosByUser, getOnePhoto, addNewPhoto, deletePhoto, get
 const { checkFirebaseToken } = require('../middleware/auth');
 
 photosRouter.get('/', checkFirebaseToken, getAllPhotos);
-photosRouter.get('/profile/:poster_id', getPhotosByUser)
+photosRouter.get('/profile/:poster_id', checkFirebaseToken, getPhotosByUser)
 photosRouter.get('/:id', getOnePhoto);
 photosRouter.post('/', checkFirebaseToken, addNewPhoto);
 photosRouter.delete('/:id', deletePhoto);
