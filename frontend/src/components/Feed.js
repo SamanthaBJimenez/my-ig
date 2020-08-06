@@ -75,7 +75,7 @@ const Feed = () => {
             fetchPhotos();
 
         }
-    })
+    }, [])
     
     // const getPhotoInfo = (image) => {
     //     const uploadRef = storage.ref().child(`images/${image.name}`);

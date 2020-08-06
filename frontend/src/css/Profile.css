@@ -1,5 +1,20 @@
 .displayLoggedUser {
-    flex-direction: column;
+    color: rgba(var(--i1d,38,38,38),1);
+    font: inherit;
+    vertical-align: baseline;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    display: flex;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    margin-bottom: 44px;
 }
     
 .profile_btn {
@@ -39,7 +54,7 @@
     margin-bottom: 0;
     box-sizing: content-box;
     width: calc(100% - 40px);
-    padding: 30px 20px 0;
+    padding: 45px 20px 0;
 }
     
 .profileInfo {
@@ -58,11 +73,9 @@
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     flex-direction: row;
-    margin-bottom: 44px;
 }
     
 .profile_username {
-    -webkit-box-direction: normal;
     padding: 0;
     border: 0;
     font: inherit;
@@ -74,7 +87,7 @@
     color: rgba(var(--i1d,38,38,38),1);
     display: block;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: unset;
     white-space: nowrap;
 }
     
@@ -154,15 +167,17 @@
     -webkit-box-direction: normal;
     flex-direction: column;
     flex-shrink: 0;
-    margin: 0;
-    padding: 0;
     position: relative;
+    border-top: 1px solid rgba(var(--b38,219,219,219),1);
+    padding: 40px 0;
+    /* margin: -50px 0; */
+    align-items: center;
 }
     
 .outer_profile_div {
     background-color: #FAFAFA;
     display: flex;
-    margin-top: 3%;
+    margin-top: 3.7%;
 }
     
 .navbar {
@@ -452,11 +467,51 @@
     width: 10%;
     height: auto;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
 }
 
 .prof_avatar {
-    width: 45%;
+    color: rgba(var(--i1d,38,38,38),1);
+    font: inherit;
+    vertical-align: baseline;
+    align-items: stretch;
+    border: 0 solid #000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    flex-shrink: 0;
+    flex-basis: 0;
+    flex-grow: 1;
+    margin: 0px 100px 0px 75px;
+}
+
+.bioP {
+    color: rgba(var(--i1d,38,38,38),1);
+    -webkit-box-direction: normal;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.fullNameP {
+    color: rgba(var(--i1d,38,38,38),1);
+    -webkit-box-direction: normal;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    display: inline;
+    font-weight: 600;
+}
+
+.infoDiv {
+    text-align-last: start;
 }
