@@ -13,6 +13,7 @@ import { storage } from '../firebase';
 const Upload = () => {
     const API = apiURL();
     const [image, setImage] = useState([]);
+    const [imageName, setImageName] = useState("");
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
     const { token } = useContext(AuthContext);
@@ -44,6 +45,9 @@ const Upload = () => {
         debugger
         if(e.target.files[0]) {
             setImage(e.target.files[0]);
+            setImageName(e.target.files[0].name);
+            console.log(image);
+            console.log(imageName);
         }
     }
 
@@ -74,6 +78,7 @@ const Upload = () => {
                     })
             }
         );
+        setImage([]);
     }
 
     const postPhoto = async (e) => {
@@ -165,11 +170,11 @@ const Upload = () => {
                             #
                             <input className="upload_input" type="text" placeholder="Hashtag" name="hashtag" onChange={(e) => setHashtag(e.target.value)} value={hashtag} />
                         </label> */}
-                        <button className="upload_button" type="submit" onClick={postPhoto}>Post</button>
+                        <button className="upload_button" type="submit" onClick={postPhoto} /*disabled={imageName ? false : true}*/>Post</button>
                     </form>
                 </div>
-                <div>
-                    {url? <img className="finalUpload" src={url} alt='firebase-image' width={500} height={500} /> : <div></div>}
+                <div className="photoUploadDiv">
+                    {url? <img className="finalUpload" src={url} alt='firebase-image' /> : <div></div>}
                 </div>
             </div>
         </div>

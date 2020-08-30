@@ -19,7 +19,7 @@
     
 .profile_btn {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    padding: 5px 9px;
+    padding: 5px 5px;
     background-color: transparent;
     border: 1px solid rgba(var(--ca6,219,219,219),1);
     color: rgba(var(--f75,38,38,38),1);
@@ -28,6 +28,7 @@
     text-decoration: none;
     cursor: pointer;
     outline: none;
+    display: block;
 }
 
 .profile_btn:active {
@@ -82,7 +83,7 @@
     vertical-align: baseline;
     font-size: 28px;
     line-height: 32px;
-    margin: -5px 0 -6px;
+    margin: -5px 30px -6px 0;
     font-weight: 300;
     color: rgba(var(--i1d,38,38,38),1);
     display: block;
@@ -131,6 +132,7 @@
     flex-shrink: 1;
     min-width: 0;
     margin-bottom: 20px;
+    display: -webkit-inline-box;
 }
     
 .prof_info {
@@ -175,9 +177,15 @@
 }
     
 .outer_profile_div {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
     display: flex;
     margin-top: 3.7%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
 }
     
 .navbar {

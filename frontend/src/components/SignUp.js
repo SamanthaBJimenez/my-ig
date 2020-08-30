@@ -24,7 +24,7 @@ export default function SignUp() {
             sessionStorage.loggedUser = res.user.uid
             history.push("/home")
         } catch (err) {
-            console.log(err);
+            alert(err);
         }
 
     }
