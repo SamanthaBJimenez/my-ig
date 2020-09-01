@@ -26,9 +26,9 @@ export default function LogIn() {
       e.preventDefault();
       debugger;
       try {
-          let res = await login("sammy@gmail.com", "sammygal");
-          console.log("sammy@gmail.com")
-          sessionStorage.loggedUser = res.user.uid;
+          let res = await login("joey@gmail.com", "joeymoey");
+          console.log("joey@gmail.com")
+          sessionStorage.loggedUser = "gMfw4cWqRMNmPNnEZTbHSlVY72q1";
           history.push("/home");
       } catch (err) {
           alert(err);

@@ -103,12 +103,12 @@ const Profile = () => {
     const handleShow = () => setShow(true);
 
     const handleEdit = async (e) => {
-        // debugger;
+        debugger;
         e.preventDefault();
         try {
             let avatarInput = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/avatars%2F${newAvatar.name}?alt=media&token=c8b555d1-e4ef-45f0-9a02-1ffdb672ef75`
             // console.log(avatarInput);
-            console.log(token);
+            console.log(sessionStorage.loggedUser);
             // let avatarInput = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/avatars%2F${newAvatar.name}?alt=media&token=62e3e06a-6cb0-4a86-8cae-3823acf1ecdf`
             // let res = await axios({
             //     method: "patch",
