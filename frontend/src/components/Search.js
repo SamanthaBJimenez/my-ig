@@ -4,76 +4,79 @@ import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
 import '../css/Search.css';
 
+import { Input } from "antd";
+import { useCombobox } from "downshift";
+import { NavLink } from 'react-router-dom';
+
 const Search = () => {
     const API = apiURL();
-    const { token } = useContext(AuthContext);
-    const [list, setList] = useState([]);
-    const [suggestion, setSuggest] = useState([]);
-    const [search, setSearch] = useState("");
+    // const { token } = useContext(AuthContext);
+    // const [list, setList] = useState([]);
+    // const [suggestion, setSuggest] = useState([]);
+    // const [search, setSearch] = useState("");
     
-    const handleSearch = (e) => {
-        e.preventDefault();
-        window.location='../home';
-        sessionStorage.searchTerm = e.target.elements[0].value;
-    }
+  const [inputItems, setInputItems] = useState([])
+  const [users, setUsers] = useState([])
+  const [singleUser, setSingleUser] = useState("")
 
-    const handleChange = (e) => {
-        const value = e.target.value;
-        let suggestion = [];
-        if(value.length > 0) {
-            const regex = new RegExp(`${value}`, `i`);
-            suggestion = list.sort().filter(v => regex.test(v));
-        }
-        setSuggest(suggestion);
-        setSearch(value);
+  useEffect(async() => {
+    //   debugger;
+    try {
+        let res = await axios.get(`${API}/users/`)
+        setUsers(res.data.payload);
+    } catch(error) {
+        setUsers([]);
     }
+  }, [])
 
-    const handleSelected = (value) => {
-        setSearch(value);
-        setSuggest([]);
-    }
+  console.log(users);
 
-    const renderSuggestions = () => {
-        if(suggestion.length === 0) {
-            return null
-        } else {
-            return(
-                <ul>
-                    {suggestion.map((item) => <li key={item} onClick={() => handleSelected(item)}>{item}</li>)}
-                </ul>
-            )
-        }
-    }
-
-    const fetchData = async (url, setData) => {
-        let res = await axios({
-            method: "get",
-            url: url,
-            headers: {
-                'AuthToken': token
-            }
-        });
-        try {
-            res.data.payload.map((el) => {
-                return setData(prevState => [...prevState, el.tag_name])
-            });
-        } catch(error) {
-            console.log(error)
-        }
-    }
-
-    useEffect(() => {
-        fetchData(`${API}/photos/hashtag/all`, setList)
-    }, [])
+  const {
+    isOpen,
+    getMenuProps,
+    getInputProps,
+    getComboboxProps,
+    highlightedIndex,
+    getItemProps,
+  } = useCombobox({
+    items: inputItems,
+    onInputValueChange: ({ inputValue }) => {
+      setInputItems(
+        users.filter((item) =>
+          item.username.toLowerCase().startsWith(inputValue.toLowerCase())
+        )
+      )
+    },
+  })
 
     return(
         <div className="searchDiv">
-            <form onSubmit={handleSearch}>
-            <input className="searchDivInput" placeholder="Search" value={search} type="text" onChange={handleChange}/>
-            </form>
-            <div className="resultsDiv">
-                {renderSuggestions()}
+            <div {...getComboboxProps()}>
+                <Input
+                {...getInputProps()}
+                placeholder="Find your friends..."
+                enterbutton="Search"
+                size="large"
+                className='searchDivInput'
+                />
+        {/* <input {...getInputProps()} placeholder="Search"></input> */}
             </div>
+        <ul className="searchShow" {...getMenuProps()}>
+            {isOpen &&
+            inputItems.map((item, index) => (
+                <span
+                    key={item.id}
+                    {...getItemProps({ item, index })}
+                    onClick={() => setSingleUser(item.username)}
+                >
+                    <li className="listSearch" style={highlightedIndex === index ? { "background": "rgb(255, 255, 255, 1)", "cursor": "pointer"} : {}} >
+                        <NavLink className="navlinkSearch" exact to={`/profile/${item.id}`}><h4 className="searchName">{item.username}</h4></NavLink>
+                        
+                       
+                    </li>
+                </span>
+            ))}
+        </ul>
         </div>
     )
 }
