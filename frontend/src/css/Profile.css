@@ -17,6 +17,17 @@
     margin-bottom: 44px;
 }
     
+.finstaNavbar {
+    font-family: billabongregular;
+    font-size: xx-large;
+}
+
+.ig_logoNav {
+    text-decoration: none;
+    margin-top: 13px;
+    color: black;
+}
+
 .profile_btn {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     padding: 5px 5px;

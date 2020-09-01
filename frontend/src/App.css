@@ -13,6 +13,15 @@
   }
 }
 
+@font-face {
+  font-family: 'billabongregular';
+  src: url('font/webfontkit-20200901-091440/billabong-webfont.woff2') format('woff2'),
+       url('font/webfontkit-20200901-091440/billabong-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

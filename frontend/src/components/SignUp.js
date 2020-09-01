@@ -32,7 +32,8 @@ export default function SignUp() {
     return (
         <div className="signUp">
             <div className="topDiv">
-                <img className='igImg_signup' src={ig_logo} alt='instagram_logo'/>
+                {/* <img className='igImg_signup' src={ig_logo} alt='instagram_logo'/> */}
+                <p className="finstaTitle" >Finstagram</p>
                 <h2 className="signup_blurb">Sign up to see photos and videos from your friends.</h2>
                 <form className="signUpForm" onSubmit={handleSubmit}>
                     <input className="signup_input" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
@@ -50,11 +51,11 @@ export default function SignUp() {
                 </nav>
             </div>
             <div className="bottomDiv">
-                    <p className="bottomP">Get the app.</p>
+                    {/* <p className="bottomP">Get the app.</p>
                     <div className="appLinks">
                         <img className='appStore_login' src={appStore_logo} alt='appStore_logo'/>
                         <img className='googlePlay_login' src={googlePlay_logo} alt='googlePlay_logo'/>
-                    </div>
+                    </div> */}
             </div>
         </div>
     );

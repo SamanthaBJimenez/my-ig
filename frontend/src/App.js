@@ -13,7 +13,9 @@ function App() {
     <div className="App">
       <head>
         <link rel='shortcut icon' href='/ImgFiles/user_full.png' id='favicon'></link>
+	      <link rel="stylesheet" href="font/webfontkit-20200901-091440/stylesheet.css" type="text/css" charset="utf-8" />
       </head>
+
       <AuthProvider>
           <AuthRoute exact path={"/"}>
             <LogIn/>

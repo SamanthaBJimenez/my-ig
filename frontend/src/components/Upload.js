@@ -146,7 +146,7 @@ const Upload = () => {
         <div className="mainUploadDiv">
             <nav className="navbar">
                 <div className="midNavDiv">
-                    <NavLink className="ig_logo" exact to={"/home"}><img className='igImg' src={ig_logo} alt='instagram_logo'/></NavLink>
+                    <NavLink className="ig_logoNav" exact to={"/home"}><p className="finstaNavbar" >Finstagram</p></NavLink>
                     <div className="search">
                         <Search/>
                     </div>

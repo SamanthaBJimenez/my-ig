@@ -39,7 +39,8 @@ export default function LogIn() {
     <div className="mainDiv">
             <div className="logIn">
                 <div className="topDiv">
-                    <img className='igImg_login' src={ig_logo} alt='instagram_logo'/>
+                    {/* <img className='igImg_login' src={ig_logo} alt='instagram_logo'/> */}
+                    <p className="finstaTitle" >Finstagram</p>
                     <button className="login_button" type="submit" style={{"background":"limegreen"}} onClick={handleDemo}>Demo Log In</button> 
                     <form className="logInForm" onSubmit={handleSubmit}>
                         <input className="login_input" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />

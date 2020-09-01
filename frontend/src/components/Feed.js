@@ -23,7 +23,7 @@ const Feed = () => {
 
     const fetchPhotos = async () => {
         try {
-            debugger
+            // debugger
             let res = await axios({
                 method: "get",
                 url: `${API}/photos/`,
@@ -76,23 +76,6 @@ const Feed = () => {
 
         }
     }, [])
-    
-    // const getPhotoInfo = (image) => {
-    //     const uploadRef = storage.ref().child(`images/${image.name}`);
-
-    //     // Get metadata properties
-    //     uploadRef.getMetadata().then((metadata) => {
-    //         console.log("metadata: ", metadata)
-    //         console.log("customMetadata: ", metadata.customMetadata)
-    //         console.log("customMetadata username: ", metadata.customMetadata.poster_username)
-    //         setUsername(metadata.customMetadata.poster_username)
-    //         setCaption(metadata.customMetadata.caption)
-    //         setHashtag(metadata.customMetadata.hashtag)
-    //         // username = metadata.customMetadata.poster_username
-    //     }).catch(function(error) {
-    //         console.log(error)
-    //     });
-    // }
 
     const photosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
@@ -114,7 +97,7 @@ const Feed = () => {
         <div className="feed">
             <nav className="navbar">
                 <div className="midNavDiv">
-                    <NavLink className="ig_logo" exact to={"/home"}><img className='igImg' src={ig_logo} alt='instagram_logo'/></NavLink>
+                    <NavLink className="ig_logoNav" exact to={"/home"}><p className="finstaNavbar" >Finstagram</p></NavLink>
                     <div className="search">
                         <Search/>
                     </div>

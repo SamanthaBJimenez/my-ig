@@ -32,6 +32,17 @@
     width: 95px;
 }
 
+.finstaNavbar {
+    font-family: billabongregular;
+    font-size: xx-large;
+}
+
+.ig_logoNav {
+    text-decoration: none;
+    margin-top: 13px;
+    color: black;
+}
+
 .imageDiv {
     margin-top: 10%;
     position: relative;

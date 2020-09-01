@@ -23,6 +23,17 @@
     padding-bottom: 44px;
 }
 
+.finstaNavbar {
+    font-family: billabongregular;
+    font-size: xx-large;
+}
+
+.ig_logoNav {
+    text-decoration: none;
+    margin-top: 13px;
+    color: black;
+}
+
 .navbar {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
