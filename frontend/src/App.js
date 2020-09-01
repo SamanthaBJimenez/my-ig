@@ -27,7 +27,7 @@ function App() {
           <ProtectedRoute exact path={"/upload"}>
             <Upload/>
           </ProtectedRoute>
-          <ProtectedRoute exact path={"/profile"}>
+          <ProtectedRoute exact path={"/profile/:userProf"}>
             <Profile/>
           </ProtectedRoute>
       </AuthProvider>

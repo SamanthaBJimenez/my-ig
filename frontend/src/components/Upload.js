@@ -153,7 +153,7 @@ const Upload = () => {
                     <div className="links">
                         <NavLink className="home" activeClassName={"home_selected"} exact to={"/home"}></NavLink>
                         <NavLink className="upload" activeClassName={"upload_selected"} exact to={"/upload"}></NavLink>
-                        <NavLink className="profile" activeClassName={"profile_selected"} exact to={"/profile"}></NavLink>
+                        <NavLink className="profile" activeClassName={"profile_selected"} exact to={`/profile/${sessionStorage.loggedUser}`}></NavLink>
                     </div>
                 </div>
             </nav>

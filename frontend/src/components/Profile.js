@@ -10,6 +10,7 @@ import '../css/Profile.css';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import axios from 'axios';
 import { storage } from '../firebase';
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
     const { token } = useContext(AuthContext);
@@ -25,6 +26,7 @@ const Profile = () => {
     const [progress, setProgress] = useState(0);
     // const [photoAmount, setPhotoAmount] = useState(0);
     const API = apiURL();
+    const { userProf } = useParams();
 
     useEffect(() => {
         const getUserInfo = async (userUrl) => {
@@ -47,7 +49,7 @@ const Profile = () => {
                 setUser([]);
             }
         }
-        getUserInfo(`${API}/users/id/${sessionStorage.loggedUser}`)
+        getUserInfo(`${API}/users/id/${userProf}`)
     }, [])
 
     const handleChange = (e) => {
@@ -177,7 +179,7 @@ const Profile = () => {
                     <div className="links">
                         <NavLink className="home" activeClassName={"home_selected"} exact to={"/home"}></NavLink>
                         <NavLink className="upload" activeClassName={"upload_selected"} exact to={"/upload"}></NavLink>
-                        <NavLink className="profile" activeClassName={"profile_selected"} exact to={"/profile"}></NavLink>
+                        <NavLink className="profile" activeClassName={"profile_selected"} exact to={`/profile/${sessionStorage.loggedUser}`}></NavLink>
                     </div>
                 </div>
             </nav>
@@ -221,7 +223,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="userAlbumDiv">
-                    <UserPhotoAlbum /*onChange={handlePhotoAmountChange}*/ />
+                    <UserPhotoAlbum userProf={userProf}/*onChange={handlePhotoAmountChange}*/ />
                 </div>
             </div>
         </div>

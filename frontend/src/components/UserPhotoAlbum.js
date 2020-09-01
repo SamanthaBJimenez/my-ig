@@ -3,14 +3,16 @@ import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
 import axios from 'axios';
 import '../css/UserPhotoAlbum.css';
+import { useParams } from 'react-router-dom';
 
 
 
-const UserPhotoAlbum = () => {
+const UserPhotoAlbum = ({userProf}) => {
     const { token } = useContext(AuthContext);
     const API = apiURL();
     const [photos, setPhotos] = useState([]);
     const [photoAmount, setPhotoAmount] = useState(0);
+
 
 
     useEffect(() => {
@@ -36,7 +38,7 @@ const UserPhotoAlbum = () => {
                 setPhotos([]);
             }
         }
-        getUserPhotos(`${API}/photos/profile/${sessionStorage.loggedUser}`)
+        getUserPhotos(`${API}/photos/profile/${userProf}`)
     }, [])
 
     const userPhotosFeed = photos.map(photo => {

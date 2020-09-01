@@ -96,12 +96,11 @@ const Feed = () => {
 
     const photosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
-        debugger
         // getPhotoInfo(photo)
         return(
             <div className="feedImgContent">
                 <div className="imgHeader">
-                    <p className="imgUsername">{photo.username}</p>
+                    <NavLink className="imgUsername" exact to={`/profile/${photo.id}`}>{photo.username}</NavLink>
                 </div>
                 <img className='feedImg' src={photo.imageurl} />
                 <p>{photo.caption}</p>
@@ -122,7 +121,7 @@ const Feed = () => {
                     <div className="links">
                         <NavLink className="home" activeClassName={"home_selected"} exact to={"/home"}></NavLink>
                         <NavLink className="upload" activeClassName={"upload_selected"} exact to={"/upload"}></NavLink>
-                        <NavLink className="profile" activeClassName={"profile_selected"} exact to={"/profile"}></NavLink>
+                        <NavLink className="profile" activeClassName={"profile_selected"} exact to={`/profile/${sessionStorage.loggedUser}`}></NavLink>
                     </div>
                 </div>
             </nav>
