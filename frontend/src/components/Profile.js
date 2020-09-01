@@ -30,7 +30,6 @@ const Profile = () => {
 
     useEffect(() => {
         const getUserInfo = async (userUrl) => {
-            // debugger
             try {
                 let res = await axios({
                     method: "get",
@@ -61,7 +60,6 @@ const Profile = () => {
     const handleUpload = (e) => {
         e.preventDefault();
         if(newAvatar !== "") {
-            // debugger;
             const uploadTask = storage.ref(`avatars/${newAvatar.name}`).put(newAvatar);
             uploadTask.on(
                 "state_changed",
@@ -103,27 +101,10 @@ const Profile = () => {
     const handleShow = () => setShow(true);
 
     const handleEdit = async (e) => {
-        debugger;
         e.preventDefault();
         try {
             let avatarInput = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/avatars%2F${newAvatar.name}?alt=media&token=c8b555d1-e4ef-45f0-9a02-1ffdb672ef75`
-            // console.log(avatarInput);
             console.log(sessionStorage.loggedUser);
-            // let avatarInput = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/avatars%2F${newAvatar.name}?alt=media&token=62e3e06a-6cb0-4a86-8cae-3823acf1ecdf`
-            // let res = await axios({
-            //     method: "patch",
-            //     url: `${API}/users/update/${sessionStorage.loggedUser}`,
-            //     headers: {
-            //         'AuthToken': token,
-            //         'Content-Type': 'application/json'
-            //     },
-            //     data: {
-            //         'username': username,
-            //         'full_name': full_name,
-            //         'bio': bio,
-            //         'email': email,
-            //         'avatar': `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/avatars%2FC01FB681-1962-49AB-8D03-30D7463BF105.jpeg?alt=media&token=62e3e06a-6cb0-4a86-8cae-3823acf1ecdf`
-            //     }
             let res = await axios.patch(`${API}/users/update`, {
                             id: sessionStorage.loggedUser,
                             username: username,
@@ -134,7 +115,6 @@ const Profile = () => {
             });
             console.log(res.data.payload);
         } catch(error) {
-            // handleClose();
             console.log(error)
         }
     }

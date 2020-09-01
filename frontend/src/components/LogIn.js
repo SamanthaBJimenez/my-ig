@@ -24,7 +24,6 @@ export default function LogIn() {
 
   const handleDemo = async (e) => {
       e.preventDefault();
-      debugger;
       try {
           let res = await login("joey@gmail.com", "joeymoey");
           console.log("joey@gmail.com")

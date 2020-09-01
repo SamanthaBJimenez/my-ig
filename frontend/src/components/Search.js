@@ -20,7 +20,6 @@ const Search = () => {
   const [singleUser, setSingleUser] = useState("")
 
   useEffect(async() => {
-    //   debugger;
     try {
         let res = await axios.get(`${API}/users/`)
         setUsers(res.data.payload);

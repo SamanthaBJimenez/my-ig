@@ -18,6 +18,23 @@
     width: 100%;
 }
 
+.infoDiv {
+    width: 213px;
+    display: grid;
+    grid-template-rows: 30px 45px;
+    grid-template-columns: 90px;
+    grid-auto-flow: column;
+}
+
+.infoDivAvatar {
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
 .infoDivUsername {
     margin: 12px 0px 0px 14px;
     vertical-align: baseline;

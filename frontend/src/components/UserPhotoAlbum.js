@@ -18,7 +18,6 @@ const UserPhotoAlbum = ({userProf}) => {
     useEffect(() => {
         const getUserPhotos = async (userPhotosUrl) => {
             try {
-                // debugger;
                 let res = await axios({
                     method: "get",
                     url: userPhotosUrl,
@@ -43,7 +42,6 @@ const UserPhotoAlbum = ({userProf}) => {
 
     const userPhotosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
-        // debugger
         return(
             <div className="userPhotoContent">
                 <img className='userPhoto' src={photo.imageurl} />

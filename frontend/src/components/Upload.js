@@ -35,14 +35,12 @@ const Upload = () => {
     //                 'imageURL': image.name
     //             }
     //         });
-    //         debugger;
     //     } catch(error) {
     //         console.log(error)
     //     }
     // }
 
     const handleChange = (e) => {
-        debugger
         if(e.target.files[0]) {
             setImage(e.target.files[0]);
             setImageName(e.target.files[0].name);
@@ -52,7 +50,6 @@ const Upload = () => {
     }
 
     const handleUpload = (e) => {
-        debugger;
         e.preventDefault();
         // postPhoto();
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -82,7 +79,6 @@ const Upload = () => {
     }
 
     const postPhoto = async (e) => {
-        debugger;
         e.preventDefault();
         try {
             let res = await axios({
@@ -121,14 +117,13 @@ const Upload = () => {
     //                 'caption': null
     //             }
     //         });
-    //         debugger;
     //     } catch(error) {
     //         console.log(error)
     //     }
     // }
 
     // const handleNewPost = async () => {
-    //     debugger;
+    //     ;
     //     let newPost = await axios.post(`${API}/photos/`, {poster_id: sessionStorage.loggedUser, imageURL: file.name})
     //     handleNewHashtag(newPost.data.payload);
     //     window.location = '../home';

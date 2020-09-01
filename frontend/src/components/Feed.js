@@ -23,7 +23,6 @@ const Feed = () => {
 
     const fetchPhotos = async () => {
         try {
-            // debugger
             let res = await axios({
                 method: "get",
                 url: `${API}/photos/`,
@@ -35,7 +34,6 @@ const Feed = () => {
             // const listRef = storageRef.child(`avatars`)
             // const firstPage = await listRef.list({ maxResults: 100});
             // console.log(firstPage.items)
-            // debugger
             // setPhotos(firstPage.items)
         } catch(error) {
             setPhotos([]);
@@ -51,9 +49,7 @@ const Feed = () => {
                     'AuthToken': token
                 }
             });
-            // debugger;
             // setPhotos(res.data.payload);
-            // debugger;
         } catch(error) {
             setPhotos([]);
         }

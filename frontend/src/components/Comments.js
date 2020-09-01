@@ -28,9 +28,7 @@ const Comments = ({photo_id}) => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        debugger
         try {
-            debugger
             await axios.post(`${API}/photos/comments`, {
                 commenter_name: sessionStorage.userName,
                 photo_id: photo_id,
@@ -48,7 +46,6 @@ const Comments = ({photo_id}) => {
     })
 
     const allComments = photoComments.map(comment => {
-        // debugger
         return(
             <div className="content">
                 <p className="commenterNameP">{comment.commenter_name}</p>
