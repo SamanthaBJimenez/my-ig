@@ -7,6 +7,7 @@ import '../css/SignUp.css';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import appStore_logo from '../ImgFiles/appStoreIcon.png';
 import googlePlay_logo from '../ImgFiles/googlePlayIcon.png';
+import iphone from './../ImgFiles/iphone.png';
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -30,7 +31,12 @@ export default function SignUp() {
     }
     
     return (
+        <div className="mainDiv">
+
+    
         <div className="signUp">
+        <img className="iphoneImg" src={iphone}/>
+
             <div className="topDiv">
                 {/* <img className='igImg_signup' src={ig_logo} alt='instagram_logo'/> */}
                 <p className="finstaTitle" >Finstagram</p>
@@ -57,6 +63,7 @@ export default function SignUp() {
                         <img className='googlePlay_login' src={googlePlay_logo} alt='googlePlay_logo'/>
                     </div> */}
             </div>
+        </div>
         </div>
     );
 };

@@ -5,6 +5,7 @@ import '../css/LogIn.css';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import appStore_logo from '../ImgFiles/appStoreIcon.png';
 import googlePlay_logo from '../ImgFiles/googlePlayIcon.png';
+import iphone from './../ImgFiles/iphone.png';
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -37,7 +38,8 @@ export default function LogIn() {
   return (
     <div className="mainDiv">
             <div className="logIn">
-                <div className="topDiv">
+                <img className="iphoneImg" src={iphone}/>
+                <div className="topDivLogIn">
                     {/* <img className='igImg_login' src={ig_logo} alt='instagram_logo'/> */}
                     <p className="finstaTitle" >Finstagram</p>
                     <button className="login_button" type="submit" style={{"background":"limegreen"}} onClick={handleDemo}>Demo Log In</button> 
@@ -47,7 +49,7 @@ export default function LogIn() {
                         <button className="login_button" type="submit">Log In</button> 
                     </form>
                 </div>
-                <div className="middleDiv">
+                <div className="middleDivLogIn">
                     <nav className="midNav">
                         Don't have an account? 
                         <NavLink className="signup" exact to={"/signup"}> Sign Up</NavLink>

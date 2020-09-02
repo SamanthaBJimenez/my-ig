@@ -11,6 +11,8 @@ import ig_logo from '../ImgFiles/ig_logo.png';
 import axios from 'axios';
 import { storage } from '../firebase';
 import { useParams } from "react-router-dom";
+import settings from './../ImgFiles/settings.png';
+import log_out from './../ImgFiles/cancel.png';
 
 const Profile = () => {
     const { token } = useContext(AuthContext);
@@ -128,8 +130,11 @@ const Profile = () => {
                 <section className="prof_section">
                     <div className="prof_header">
                         <h1 className="profile_username">{user.username}</h1>
-                        <button className="profile_btn" onClick = {handleShow}>Edit Profile</button>
-                        <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink>
+                        {userProf === sessionStorage.loggedUser ? <button className="profile_btn" onClick = {handleShow}><img className="settingsBtn" src={settings} alt="edit_button"/></button> : <div></div>}
+                        {/* <img className="settingsBtn" src={settings} alt="edit_button"/> */}
+                        {userProf === sessionStorage.loggedUser ? <NavLink className="profile_btn" onClick={logout} exact to={"/"}><img className="logoutBtn" src={log_out} alt="logout_button"/></NavLink> : <div></div>}
+                    
+                        {/* <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink> */}
                     </div>
                     <div>
                         {/* <p>{photoCount}</p> */}
@@ -138,7 +143,7 @@ const Profile = () => {
                         <div className="usernameDiv">
                             <p className="usernameP">{user.name}</p>
                         </div>
-                        <div className="infoDiv">
+                        <div className="infoProfDiv">
                             <p className="fullNameP">{user.full_name}</p>
                             <p className="bioP">{user.bio}</p>
                         </div>
