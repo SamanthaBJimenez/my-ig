@@ -6,6 +6,7 @@ import ig_logo from '../ImgFiles/ig_logo.png';
 import appStore_logo from '../ImgFiles/appStoreIcon.png';
 import googlePlay_logo from '../ImgFiles/googlePlayIcon.png';
 import iphone from './../ImgFiles/iphone.png';
+import iphoneBack from './../ImgFiles/iphoneBack.jpg';
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -39,6 +40,8 @@ export default function LogIn() {
     <div className="mainDiv">
             <div className="logIn">
                 <img className="iphoneImg" src={iphone}/>
+                <img className="iphoneBack" src={iphoneBack} width="461" height="821"></img>
+                
                 <div className="topDivLogIn">
                     {/* <img className='igImg_login' src={ig_logo} alt='instagram_logo'/> */}
                     <p className="finstaTitle" >Finstagram</p>

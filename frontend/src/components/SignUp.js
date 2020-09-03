@@ -8,6 +8,8 @@ import ig_logo from '../ImgFiles/ig_logo.png';
 import appStore_logo from '../ImgFiles/appStoreIcon.png';
 import googlePlay_logo from '../ImgFiles/googlePlayIcon.png';
 import iphone from './../ImgFiles/iphone.png';
+import iphoneBack from './../ImgFiles/iphoneBack.jpg';
+
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -36,6 +38,7 @@ export default function SignUp() {
     
         <div className="signUp">
         <img className="iphoneImg" src={iphone}/>
+        <img className="iphoneBack" src={iphoneBack} width="461" height="821"></img>
 
             <div className="topDiv">
                 {/* <img className='igImg_signup' src={ig_logo} alt='instagram_logo'/> */}

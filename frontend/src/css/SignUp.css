@@ -346,3 +346,13 @@ text-align: center;
     /* margin-right: -15px; */
     align-self: start;
     }
+
+    .iphoneBack {
+        height: 436px;
+    left: 148px;
+    /* opacity: 0; */
+    position: absolute;
+    top: 95px;
+    /* visibility: hidden; */
+    width: 247px;
+    }
