@@ -6,17 +6,14 @@ import Feed from './components/Feed';
 import Profile from './components/Profile';
 import AuthProvider from './providers/AuthProvider';
 import { AuthRoute, ProtectedRoute } from './util/routesUtil';
+import { Switch } from 'react-router-dom';
 import Upload from './components/Upload';
 
 function App() {
   return (
     <div className="App">
-      <head>
-        <link rel='shortcut icon' href='/ImgFiles/user_full.png' id='favicon'></link>
-	      <link rel="stylesheet" href="font/webfontkit-20200901-091440/stylesheet.css" type="text/css" charset="utf-8" />
-      </head>
-
       <AuthProvider>
+        <Switch>
           <AuthRoute exact path={"/"}>
             <LogIn/>
           </AuthRoute>
@@ -32,6 +29,7 @@ function App() {
           <ProtectedRoute exact path={"/profile/:userProf"}>
             <Profile/>
           </ProtectedRoute>
+        </Switch>
       </AuthProvider>
     </div>
   );
