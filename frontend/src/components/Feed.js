@@ -64,22 +64,22 @@ const Feed = () => {
     }
 
     useEffect(() => {
-        if(sessionStorage.searchTerm){
-            fetchSearch(`${API}/photos/hashtag/tag/${sessionStorage.searchTerm}`);
-            searchResult();
-        } else {
+        // if(sessionStorage.searchTerm){
+            // fetchSearch(`${API}/photos/hashtag/tag/${sessionStorage.searchTerm}`);
+            // searchResult();
+        // } else {
             fetchPhotos();
-
-        }
+            // debugger;
+        // }
     }, [])
 
     const photosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
         // getPhotoInfo(photo)
         return(
-            <div className="feedImgContent">
+            <div className="feedImgContent" key={photo.id}>
                 <div className="imgHeader">
-                    <NavLink className="imgUsername" exact to={`/profile/${photo.id}`}>{photo.username}</NavLink>
+                    <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}>{photo.username}</NavLink>
                 </div>
                 <img className='feedImg' src={photo.imageurl} />
                 <p>{photo.caption}</p>

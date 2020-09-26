@@ -2,7 +2,7 @@ const db = require('../db/index');
 
 const getAllPhotos = async (req, res, next) => {
     try {
-        let allPhotos = await db.any('SELECT Photos.id, Photos.imageURL, Photos.caption, Users.id, Users.username FROM Photos LEFT JOIN Users ON Photos.poster_id=Users.id ORDER BY time_stamp DESC');
+        let allPhotos = await db.any('SELECT Photos.id, Photos.imageURL, Photos.caption, Users.id AS user_id, Users.username FROM Photos LEFT JOIN Users ON Photos.poster_id=Users.id ORDER BY time_stamp DESC');
         res.status(200).json({
             status: 'success',
             message: 'all photos retrieved',

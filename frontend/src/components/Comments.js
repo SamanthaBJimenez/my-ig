@@ -47,7 +47,7 @@ const Comments = ({photo_id}) => {
 
     const allComments = photoComments.map(comment => {
         return(
-            <div className="content">
+            <div className="content" key={comment.id}>
                 <p className="commenterNameP">{comment.commenter_name}</p>
                 <p className="commentContent">{comment.comment}</p>
             </div>

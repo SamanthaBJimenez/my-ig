@@ -19,13 +19,16 @@ const Search = () => {
   const [users, setUsers] = useState([])
   const [singleUser, setSingleUser] = useState("")
 
-  useEffect(async() => {
-    try {
-        let res = await axios.get(`${API}/users/`)
-        setUsers(res.data.payload);
-    } catch(error) {
-        setUsers([]);
+  useEffect(() => {
+    const getUserInfo = async() => {
+      try {
+          let res = await axios.get(`${API}/users/`)
+          setUsers(res.data.payload);
+      } catch(error) {
+          setUsers([]);
+      }
     }
+    getUserInfo();
   }, [])
 
   console.log(users);
