@@ -51,7 +51,7 @@ const Profile = () => {
             }
         }
         getUserInfo(`${API}/users/id/${userProf}`)
-    }, [])
+    }, [userProf])
 
     const handleChange = (e) => {
         if(e.target.files[0]) {

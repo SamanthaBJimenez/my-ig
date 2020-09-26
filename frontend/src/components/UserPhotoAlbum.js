@@ -13,8 +13,6 @@ const UserPhotoAlbum = ({userProf}) => {
     const [photos, setPhotos] = useState([]);
     const [photoAmount, setPhotoAmount] = useState(0);
 
-
-
     useEffect(() => {
         const getUserPhotos = async (userPhotosUrl) => {
             try {
@@ -38,7 +36,7 @@ const UserPhotoAlbum = ({userProf}) => {
             }
         }
         getUserPhotos(`${API}/photos/profile/${userProf}`)
-    }, [])
+    }, [userProf])
 
     const userPhotosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
