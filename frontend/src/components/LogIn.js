@@ -18,7 +18,7 @@ export default function LogIn() {
     try {
         let res = await login(email, password);
         sessionStorage.loggedUser = res.user.uid;
-        // history.push("/home");
+        history.push("/home");
     } catch (err) {
         alert(err);
     }
@@ -30,7 +30,7 @@ export default function LogIn() {
           let res = await login("joey@gmail.com", "joeymoey");
           console.log("joey@gmail.com")
           sessionStorage.loggedUser = "gMfw4cWqRMNmPNnEZTbHSlVY72q1";
-        //   history.push("/home");
+          history.push("/home");
       } catch (err) {
           alert(err);
       }

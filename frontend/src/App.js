@@ -6,7 +6,7 @@ import Feed from './components/Feed';
 import Profile from './components/Profile';
 import AuthProvider from './providers/AuthProvider';
 import { AuthRoute, ProtectedRoute } from './util/routesUtil';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Upload from './components/Upload';
 
 function App() {
@@ -14,12 +14,12 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Switch>
-          <AuthRoute exact path={"/"}>
+          <Route exact path={"/"}>
             <LogIn/>
-          </AuthRoute>
-          <AuthRoute exact path={"/signup"}>
+          </Route>
+          <Route exact path={"/signup"}>
             <SignUp/>
-          </AuthRoute>
+          </Route>
           <ProtectedRoute exact path={"/home"}>
             <Feed/>
           </ProtectedRoute>
