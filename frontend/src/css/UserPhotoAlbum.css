@@ -25,6 +25,25 @@
     transform: translate(-50%, -50%);
 }
 
+.userPhotoBtn {
+    z-index: 1;
+    color: black;
+    background-color: white;
+    position: absolute;
+    opacity: .7;
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 5px 10px;
+    right: 0;
+    cursor: pointer;
+}
+
+.userPhotoBtn:hover {
+    opacity: 1;
+    color: #cc0000;
+}
+
 .userPhotoContent {
     position: relative;
     overflow: hidden;

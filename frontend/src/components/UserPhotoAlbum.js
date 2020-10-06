@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 
 
-const UserPhotoAlbum = ({userProf}) => {
+const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
     const { token } = useContext(AuthContext);
     const API = apiURL();
     const [photos, setPhotos] = useState([]);
@@ -24,7 +24,9 @@ const UserPhotoAlbum = ({userProf}) => {
                     }
                 });
                 setPhotos(res.data.payload);
-                setPhotoAmount(res.data.payload.length)
+                setPhotoAmount(res.data.payload.length);
+                totalPhotoAmount(photoAmount)
+                // debugger;
                 // setUser(res.data.payload);
                 // setFullname(res.data.payload.full_name)
                 // setBio(res.data.payload.bio)
@@ -36,12 +38,22 @@ const UserPhotoAlbum = ({userProf}) => {
             }
         }
         getUserPhotos(`${API}/photos/profile/${userProf}`)
-    }, [userProf])
+    }, [userProf, photoAmount])
+
+    const deletePhoto = async (e) => {
+        try {
+            let res = await axios.delete(`${API}/photos/${e.target.value}`);
+            setPhotoAmount(photoAmount-1);
+        } catch(error) {
+            console.log(error)
+        }
+    }
 
     const userPhotosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
         return(
             <div className="userPhotoContent">
+                <button className='userPhotoBtn' type='button' onClick={deletePhoto} value={photo.id}>delete</button>
                 <img className='userPhoto' src={photo.imageurl} />
             </div>
         )

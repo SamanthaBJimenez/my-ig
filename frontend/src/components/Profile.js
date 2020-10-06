@@ -26,7 +26,7 @@ const Profile = () => {
     const [avatarUrl, setAvatarUrl] = useState("");
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
-    // const [photoAmount, setPhotoAmount] = useState(0);
+    const [totalPhotos, setTotalPhotos] = useState(0);
     const API = apiURL();
     const { userProf } = useParams();
 
@@ -137,7 +137,7 @@ const Profile = () => {
                         {/* <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink> */}
                     </div>
                     <div>
-                        {/* <p>{photoCount}</p> */}
+                        <p>{totalPhotos} posts</p>
                     </div>
                     <div className="prof_info">
                         <div className="usernameDiv">
@@ -208,7 +208,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="userAlbumDiv">
-                    <UserPhotoAlbum userProf={userProf}/*onChange={handlePhotoAmountChange}*/ />
+                    <UserPhotoAlbum userProf={userProf} totalPhotoAmount={photoAmount => setTotalPhotos(photoAmount)}/*onChange={handlePhotoAmountChange}*/ />
                 </div>
             </div>
         </div>
