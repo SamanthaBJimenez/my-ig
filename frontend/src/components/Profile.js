@@ -137,7 +137,7 @@ const Profile = () => {
                         {/* <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink> */}
                     </div>
                     <div>
-                        <p>{totalPhotos} posts</p>
+                        {totalPhotos === 1 ? <p className="photoAmount">{totalPhotos} post</p> : <p className="photoAmount">{totalPhotos} posts</p>}
                     </div>
                     <div className="prof_info">
                         <div className="usernameDiv">

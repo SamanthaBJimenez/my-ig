@@ -550,3 +550,8 @@
     height: 150px;
     padding: 10px 0px;
 }
+
+.photoAmount {
+    float: left;
+    width: fit-content;
+}
