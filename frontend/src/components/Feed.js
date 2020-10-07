@@ -100,12 +100,13 @@ const Feed = () => {
     const handleShow = () => setShow(true);
 
     const photosFeed = photos.map(photo => {
+        // debugger;
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
         // getPhotoInfo(photo)
         return(
             <div className="feedImgContent" key={photo.id}>
                 <div className="imgHeader">
-                    <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}>{photo.username}</NavLink>
+                    <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}><img className="avatarFeed" src={photo.avatar}/>{photo.username}</NavLink>
                 </div>
                 <img className='feedImg' src={photo.imageurl} />
                 {photo.caption ? <div className="content">

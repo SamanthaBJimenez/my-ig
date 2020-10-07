@@ -273,7 +273,8 @@
     text-decoration: none;
     background-color: transparent;
     border: 0;
-    display: inline;
+    /* display: inline; */
+    display: contents;
     padding: 0;
     position: relative;
     color: rgba(var(--f75,38,38,38),1);
@@ -313,4 +314,12 @@
 .content:hover > .commentEdit {
     background-color: rgba(0, 149, 246, .5);
     /* transition: background-color color; */
+}
+
+.avatarFeed {
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    margin-right: 15px;
 }
