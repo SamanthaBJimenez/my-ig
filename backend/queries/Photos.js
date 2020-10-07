@@ -180,4 +180,21 @@ const addNewComment = async (req, res, next) => {
     }
 }
 
-module.exports = {getAllPhotos, getPhotosByUser, getOnePhoto, addNewPhoto, deletePhoto, getPhotosByHashtag, getAllHashtags, addNewHashtag, getHashtagsByPhoto, getCommentsByPhoto, addNewComment};
+const deleteComment = async (req, res, next) => {
+    try {
+        let deletedComment = await db.one('DELETE FROM Comments WHERE id = $1 RETURNING *', [req.params.id]);
+        res.status(200).json({
+            status: 'success',
+            message: 'deleted comment',
+            payload: deletedComment
+        })
+    } catch(error) {
+        console.log(req);
+        res.status(400).json({
+            status: 'error',
+            message: 'could not delete comment'
+        })
+    }
+}
+
+module.exports = {getAllPhotos, getPhotosByUser, getOnePhoto, addNewPhoto, deletePhoto, getPhotosByHashtag, getAllHashtags, addNewHashtag, getHashtagsByPhoto, getCommentsByPhoto, addNewComment, deleteComment};

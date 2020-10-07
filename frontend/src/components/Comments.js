@@ -7,6 +7,7 @@ import '../css/Comments.css';
 
 const Comments = ({photo_id}) => {
     const [photoComments, setPhotoComments] = useState([]);
+    const [photoAmount, setPhotoAmount] = useState(0);
     const [comment, setComment] = useState("");
     const { token } = useContext(AuthContext);
     const API = apiURL();
@@ -21,6 +22,7 @@ const Comments = ({photo_id}) => {
                 }
             });
             setPhotoComments(res.data.payload);
+            setPhotoAmount(res.data.payload.length);
         } catch(error) {
             setPhotoComments([]);
         }
@@ -43,13 +45,26 @@ const Comments = ({photo_id}) => {
 
     useEffect(() => {
         fetchComments();
-    })
+    }, [photoAmount])
+
+    const deleteComment = async (e) => {
+        try {
+            let id = e.target.value
+            let res = await axios.delete(`${API}/photos/comment/${id}`)
+            setPhotoAmount(photoAmount - 1);
+        } catch(error) {
+            console.log(error)
+        }
+    }
 
     const allComments = photoComments.map(comment => {
         return(
             <div className="content" key={comment.id}>
                 <p className="commenterNameP">{comment.commenter_name}</p>
                 <p className="commentContent">{comment.comment}</p>
+                {comment.commenter_name === sessionStorage.userName ? 
+                <button type="button" onClick={deleteComment} value={comment.id}>x</button> :
+                <div></div>}
             </div>
         )
     })
