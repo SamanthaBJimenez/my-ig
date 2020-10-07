@@ -63,7 +63,7 @@ const Comments = ({photo_id}) => {
                 <p className="commenterNameP">{comment.commenter_name}</p>
                 <p className="commentContent">{comment.comment}</p>
                 {comment.commenter_name === sessionStorage.userName ? 
-                <button type="button" onClick={deleteComment} value={comment.id}>x</button> :
+                <button className="commentDelete" type="button" onClick={deleteComment} value={comment.id}>x</button> :
                 <div></div>}
             </div>
         )

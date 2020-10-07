@@ -103,3 +103,34 @@
     resize: none;
     width: 0;
 }
+
+.commentDelete {
+    float: right;
+    cursor: pointer;
+    padding: 0px 5px;
+    border: 1px solid transparent;
+    font: inherit;
+    border-radius: 4px;
+    outline: none;
+    width: 50px;
+    position: relative;
+    /* top: -60px; */
+    height: 21px;
+    /* background-color: rgba(0, 149, 246, 1); */
+    /* visibility: hidden; */
+    background-color: white;
+    color: white;
+    margin-right: 10px;
+}
+
+.content:hover > .commentDelete {
+    background-color: rgba(0, 149, 246, .5);
+}
+
+.content:hover > .commentDelete:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    /* background-color: rgba(0, 149, 246, .5); */
+    background-color: rgba(0, 149, 246, 1);
+}

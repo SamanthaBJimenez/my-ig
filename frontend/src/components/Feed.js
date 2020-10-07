@@ -111,7 +111,7 @@ const Feed = () => {
                 {photo.caption ? <div className="content">
                     <p className="commenterNameP">{photo.username}</p>
                     <p className="commentContent">{photo.caption}</p>
-                    <button type="button" onClick={handleShow}>edit</button>
+                    <button className="commentEdit" type="button" onClick={handleShow}>edit</button>
                 </div> : <div></div>}
                 <p>{hashtag}</p>
                 <Comments photo_id={photo.id}/>
