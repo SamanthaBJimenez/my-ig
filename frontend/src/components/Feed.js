@@ -82,7 +82,10 @@ const Feed = () => {
                     <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}>{photo.username}</NavLink>
                 </div>
                 <img className='feedImg' src={photo.imageurl} />
-                <p>{photo.caption}</p>
+                {photo.caption ? <div className="content">
+                    <p className="commenterNameP">{photo.username}</p>
+                    <p className="commentContent">{photo.caption}</p>
+                </div> : <div></div>}
                 <p>{hashtag}</p>
                 <Comments photo_id={photo.id}/>
             </div>
