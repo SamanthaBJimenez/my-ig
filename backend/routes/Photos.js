@@ -1,5 +1,5 @@
 const photosRouter = require('express').Router();
-const {getAllPhotos, getPhotosByUser, getOnePhoto, addNewPhoto, deletePhoto, getPhotosByHashtag, addNewHashtag, getAllHashtags, getHashtagsByPhoto, getCommentsByPhoto, addNewComment, deleteComment} = require('../queries/Photos');
+const {getAllPhotos, getPhotosByUser, getOnePhoto, addNewPhoto, deletePhoto, getPhotosByHashtag, addNewHashtag, getAllHashtags, getHashtagsByPhoto, getCommentsByPhoto, addNewComment, deleteComment, editCaption} = require('../queries/Photos');
 const { checkFirebaseToken } = require('../middleware/auth');
 
 photosRouter.get('/', checkFirebaseToken, getAllPhotos);
@@ -14,5 +14,6 @@ photosRouter.post('/hashtag/', addNewHashtag)
 photosRouter.get('/comments/:photo_id', checkFirebaseToken, getCommentsByPhoto);
 photosRouter.post('/comments', addNewComment);
 photosRouter.delete('/comment/:id', deleteComment);
+photosRouter.patch('/edit/:id', editCaption);
 
 module.exports = photosRouter;

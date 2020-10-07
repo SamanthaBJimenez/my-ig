@@ -197,4 +197,21 @@ const deleteComment = async (req, res, next) => {
     }
 }
 
-module.exports = {getAllPhotos, getPhotosByUser, getOnePhoto, addNewPhoto, deletePhoto, getPhotosByHashtag, getAllHashtags, addNewHashtag, getHashtagsByPhoto, getCommentsByPhoto, addNewComment, deleteComment};
+const editCaption = async (req, res, next) => {
+    try {
+        let editedCaption = await db.one(`UPDATE Photos SET caption = '${req.body.caption}' WHERE id = '${req.params.id}' RETURNING *`);
+        res.status(200).json({
+            status: 'success',
+            message: 'edited caption',
+            payload: editedCaption
+        })
+    } catch(error) {
+        console.log(req);
+        res.status(400).json({
+            status: 'error',
+            message: 'could not edit caption'
+        })
+    }
+}
+
+module.exports = {getAllPhotos, getPhotosByUser, getOnePhoto, addNewPhoto, deletePhoto, getPhotosByHashtag, getAllHashtags, addNewHashtag, getHashtagsByPhoto, getCommentsByPhoto, addNewComment, deleteComment, editCaption};

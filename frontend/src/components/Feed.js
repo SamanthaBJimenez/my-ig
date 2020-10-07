@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Form, InputGroup, FormControl, Button, Modal, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { apiURL } from '../util/apiURL';
 import { AuthContext } from '../providers/AuthProvider';
@@ -16,6 +17,7 @@ const Feed = () => {
     const [username, setUsername] = useState("");
     const [caption, setCaption] = useState("");
     const [hashtag, setHashtag] = useState("");
+    const [show, setShow] = useState(false);
     const API = apiURL();
     const { token } = useContext(AuthContext);
     const storageRef = storage.ref();
@@ -71,7 +73,31 @@ const Feed = () => {
             fetchPhotos();
             // debugger;
         // }
-    }, [])
+    }, [show])
+
+    const editCaption = async (e) => {
+        try {
+            debugger;
+            let id = e.target.value
+            // let res = await axios.patch(`${API}/photos/edit/${id}`);
+            let res = await axios.patch(`${API}/photos/edit/${id}`, {
+                caption: caption
+            });
+            console.log(res.data.payload);
+            // setPhotoAmount(photoAmount - 1);
+            handleClose();
+        } catch(error) {
+            console.log(error)
+            handleClose();
+        }
+    }
+
+    const handleClose = () => {
+        setShow(false);
+        window.location.reload(true);
+    };
+
+    const handleShow = () => setShow(true);
 
     const photosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
@@ -85,9 +111,23 @@ const Feed = () => {
                 {photo.caption ? <div className="content">
                     <p className="commenterNameP">{photo.username}</p>
                     <p className="commentContent">{photo.caption}</p>
+                    <button type="button" onClick={handleShow}>edit</button>
                 </div> : <div></div>}
                 <p>{hashtag}</p>
                 <Comments photo_id={photo.id}/>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Edit Caption</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form>
+                            <input className="mb-2 edit_input" type="text" placeholder={photo.caption} onChange={(e) => setCaption(e.target.value)} value={caption} />
+                        </Form>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" type="submit" onClick={editCaption} value={photo.id}>Save</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         )
     })

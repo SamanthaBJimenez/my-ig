@@ -23,7 +23,7 @@ CREATE TABLE Photos (
     id SERIAL PRIMARY KEY,
     poster_id VARCHAR REFERENCES Users(id) ON DELETE CASCADE,
     imageURL VARCHAR,
-    caption TEXT,
+    caption VARCHAR,
     time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
