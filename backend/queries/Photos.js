@@ -19,7 +19,7 @@ const getAllPhotos = async (req, res, next) => {
 
 const getPhotosByUser = async (req, res, next) => {
     try {
-        let usersPhotos = await db.any('SELECT Photos.id, Photos.poster_id, Photos.imageURL, Photos.caption, Users.username FROM Photos LEFT JOIN Users ON Photos.poster_id=Users.id WHERE poster_id = $1 ORDER BY time_stamp', [req.params.poster_id])
+        let usersPhotos = await db.any('SELECT Photos.id, Photos.poster_id, Photos.imageURL, Photos.caption, Users.username FROM Photos LEFT JOIN Users ON Photos.poster_id=Users.id WHERE poster_id = $1 ORDER BY time_stamp DESC', [req.params.poster_id])
         res.status(200).json({
             status: 'success',
             message: 'all photos by user rertrieved',
