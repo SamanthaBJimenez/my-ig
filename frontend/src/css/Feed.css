@@ -299,6 +299,10 @@
     margin-right: 10px;
 }
 
+.content:hover {
+    background-color: rgb(224,224,224, .4);
+}
+
 .content:hover > .commentEdit:hover/*,
 .commentEdit:focus*/ {
   color: black;

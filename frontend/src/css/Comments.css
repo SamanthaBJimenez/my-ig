@@ -4,6 +4,7 @@
     font-size: 14px;
     white-space: nowrap;
     overflow-x: auto;
+    margin-top: 10px;
 }
 
 .commenterNameP {
