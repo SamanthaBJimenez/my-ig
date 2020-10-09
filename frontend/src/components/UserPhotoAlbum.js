@@ -53,7 +53,9 @@ const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
         return(
             <div className="userPhotoContent">
-                <button className='userPhotoBtn' type='button' onClick={deletePhoto} value={photo.id}>delete</button>
+            {userProf === sessionStorage.loggedUser ?
+                <button className='userPhotoBtn' type='button' onClick={deletePhoto} value={photo.id}>delete</button> : <div></div>
+            }
                 <img className='userPhoto' src={photo.imageurl} />
             </div>
         )
