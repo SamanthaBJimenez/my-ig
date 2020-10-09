@@ -105,7 +105,12 @@ const Profile = () => {
     const handleEdit = async (e) => {
         e.preventDefault();
         try {
-            let avatarInput = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/avatars%2F${newAvatar.name}?alt=media&token=c8b555d1-e4ef-45f0-9a02-1ffdb672ef75`
+            let avatarInput = '';
+            if(newAvatar.name) {
+                avatarInput = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/avatars%2F${newAvatar.name}?alt=media&token=c8b555d1-e4ef-45f0-9a02-1ffdb672ef75`
+            } else {
+                avatarInput = avatarUrl
+            }
             console.log(sessionStorage.loggedUser);
             let res = await axios.patch(`${API}/users/update`, {
                             id: sessionStorage.loggedUser,
@@ -116,6 +121,7 @@ const Profile = () => {
                             avatar: avatarInput
             });
             console.log(res.data.payload);
+            setProgress(101);
         } catch(error) {
             console.log(error)
         }
@@ -193,15 +199,17 @@ const Profile = () => {
                                         <input className="mb-2 edit_input" type="text" placeholder={user.bio ? user.bio : "Enter Bio"} onChange={(e) => setBio(e.target.value)} value={bio} />
                                         {user.avatar!==null ? <img className="finalAvatarUpload" src={user.avatar} alt='firebase-image' /> : <div></div>}
                                         <Form.Group>
-                                            <div className="progress_div">
-                                                {progress === 100 ? <div className="upload_blurb">Image Uploaded!</div> : <progress value={progress} max="100" id="uploader"/> }
-                                            </div>
+                                            {progress > 100 ? <div className="upload_blurb">Edits Saved!</div> : 
+                                                <div className="progress_div">
+                                                    {progress === 100 ? <div className="upload_blurb">Image Uploaded!</div> : <progress value={progress} max="100" id="uploader"/> }
+                                                </div>
+                                            }
                                             <Form.File id="exampleFormControlFile1" label="" onChange={handleChange}/>
                                         </Form.Group>
                                     </Form>
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button className={progress === 100 ? "modalButton hidden" : "modalButton"} variant="secondary" type="submit" onClick={handleUpload} >Save</Button>
+                                    <Button className={progress > 100 ? "modalButton hidden" : "modalButton"} variant="secondary" type="submit" onClick={handleUpload} >Save</Button>
                                 </Modal.Footer>
                             </Modal>
                         </div>
