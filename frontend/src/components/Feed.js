@@ -18,6 +18,7 @@ const Feed = () => {
     const [caption, setCaption] = useState("");
     const [hashtag, setHashtag] = useState("");
     const [show, setShow] = useState(false);
+    const [changeId, setChangeId] = useState(0);
     const API = apiURL();
     const { token } = useContext(AuthContext);
     const storageRef = storage.ref();
@@ -75,10 +76,10 @@ const Feed = () => {
         // }
     }, [show])
 
+    console.log(token)
     const editCaption = async (e) => {
         try {
-            debugger;
-            let id = e.target.value
+            let id = changeId;
             // let res = await axios.patch(`${API}/photos/edit/${id}`);
             let res = await axios.patch(`${API}/photos/edit/${id}`, {
                 caption: caption
@@ -97,12 +98,15 @@ const Feed = () => {
         window.location.reload(true);
     };
 
-    const handleShow = () => setShow(true);
+    const handleShowEdit = (e) => {
+        setShow(true);
+        setChangeId(e.target.value);
+    }
 
     const photosFeed = photos.map(photo => {
-        // debugger;
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
         // getPhotoInfo(photo)
+        console.log(photo.id)
         return(
             <div className="feedImgContent" key={photo.id}>
                 <div className="imgHeader">
@@ -112,7 +116,7 @@ const Feed = () => {
                 {photo.caption ? <div className="content">
                     <p className="commenterNameP">{photo.username}</p>
                     <p className="commentContent">{photo.caption}</p>
-                    <button className="commentEdit" type="button" onClick={handleShow}>edit</button>
+                    <button className="commentEdit" type="button" onClick={handleShowEdit} value={photo.id}>edit</button>
                 </div> : <div></div>}
                 <p>{hashtag}</p>
                 <Comments photo_id={photo.id}/>
@@ -122,7 +126,7 @@ const Feed = () => {
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
-                            <input className="mb-2 edit_input" type="text" placeholder={photo.caption} onChange={(e) => setCaption(e.target.value)} value={caption} />
+                            <input className="mb-2 edit_input" type="text" onChange={(e) => setCaption(e.target.value)} value={caption} />
                         </Form>
                     </Modal.Body>
                     <Modal.Footer>
