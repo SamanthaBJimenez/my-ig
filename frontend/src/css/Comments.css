@@ -39,6 +39,10 @@
     margin: 3px 2px;
 }
 
+.commentContent {
+    cursor: default;
+}
+
 .commentForm {
     font: inherit;
     align-items: stretch;
@@ -134,4 +138,11 @@
     cursor: pointer;
     /* background-color: rgba(0, 149, 246, .5); */
     background-color: rgba(0, 149, 246, 1);
+}
+
+.commenterLink {
+    font-weight: 600;
+    text-overflow: ellipsis;
+    display: contents;
+    color: rgba(var(--f75,38,38,38),1);
 }

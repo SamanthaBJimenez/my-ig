@@ -28,9 +28,11 @@ const DisplayUser = () =>{
     <div className="loggedUser">
         {/* <NavLink className="avatar_home" exact to={"/profile"}><img className='avatarImg' src={avatar} alt='avatar_logo'/></NavLink> */}
         <div className="infoDiv">
-            <img className="infoDivAvatar" src={user.avatar}></img>
-            <h4 className="infoDivUsername">{user.username}</h4>
-            <h5 className="infoDivFullName">{user.full_name}</h5>
+            <NavLink className="imgUsername" exact to={`/profile/${user.id}`}>
+                <img className="infoDivAvatar" src={user.avatar}></img>
+                <h4 className="infoDivUsername">{user.username}</h4>
+                <h5 className="infoDivFullName">{user.full_name}</h5>
+            </NavLink>
         </div>
     </div> 
 )}

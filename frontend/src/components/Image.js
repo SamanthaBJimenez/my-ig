@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 // import Hashtags from './Hashtags';
 // import Comments from './Comments';
 // import '../css/Image.css';
@@ -27,7 +28,9 @@ const Image = ({  filePath, username, avatar, caption, photoId }) => {
                 <img alt="" src={avatar}/>
                 <img alt="" className="photoPost" src={filePath}/>
                 <div className="caption">
+                <NavLink className="commenterLink" exact to={`/profile/${username}`}>
                     <p className="img_user">{username}</p> 
+                </NavLink>
                     <p className="img_caption">{caption}</p>
                 </div>
                 {/* <Hashtags photoId={photoId} username={username}/> */}

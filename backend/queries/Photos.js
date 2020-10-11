@@ -149,7 +149,7 @@ const getHashtagsByPhoto = async (req, res, next) => {
 
 const getCommentsByPhoto = async (req, res, next) => {
     try {
-        let commentsByPhoto = await db.any('SELECT * FROM Comments WHERE photo_id = $1', [req.params.photo_id]);
+        let commentsByPhoto = await db.any('SELECT Comments.id, Comments.commenter_name, Comments.photo_id, Comments.comment, Comments.time_stamp, Users.id AS commenter_id FROM Comments LEFT JOIN Users ON Comments.commenter_name = Users.username WHERE photo_id = $1', [req.params.photo_id]);
         res.status(200).json({
             status: 'success',
             message: 'all comments for photos retrieved',

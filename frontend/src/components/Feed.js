@@ -114,7 +114,9 @@ const Feed = () => {
                 </div>
                 <img className='feedImg' src={photo.imageurl} />
                 {photo.caption ? <div className="content">
-                    <p className="commenterNameP">{photo.username}</p>
+                    <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}>
+                        <p className="commenterNameP">{photo.username}</p>
+                    </NavLink>
                     <p className="commentContent">{photo.caption}</p>
                     {photo.username === sessionStorage.userName ?
                     <button className="commentEdit" type="button" onClick={handleShowEdit} value={photo.id}>edit</button> : <div></div> }

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../providers/AuthProvider';
 import { apiURL } from '../util/apiURL';
@@ -60,7 +61,9 @@ const Comments = ({photo_id}) => {
     const allComments = photoComments.map(comment => {
         return(
             <div className="content" key={comment.id}>
-                <p className="commenterNameP">{comment.commenter_name}</p>
+                <NavLink className="commenterLink" exact to={`/profile/${comment.commenter_id}`}>
+                    <p className="commenterNameP">{comment.commenter_name}</p>
+                </NavLink>
                 <p className="commentContent">{comment.comment}</p>
                 {comment.commenter_name === sessionStorage.userName ? 
                 <button className="commentDelete" type="button" onClick={deleteComment} value={comment.id}>x</button> :
