@@ -76,7 +76,6 @@ const Feed = () => {
         // }
     }, [show])
 
-    console.log(token)
     const editCaption = async (e) => {
         try {
             let id = changeId;

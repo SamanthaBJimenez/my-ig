@@ -27,10 +27,9 @@
 
 .userPhotoBtn {
     z-index: 1;
-    color: black;
-    background-color: white;
-    position: absolute;
-    opacity: .7;
+    color: transparent;
+    background-color: transparent;
+    /* opacity: .7; */
     border: none;
     border-radius: 2px;
     font-weight: bold;
@@ -39,14 +38,52 @@
     cursor: pointer;
 }
 
-.userPhotoBtn:hover {
-    opacity: 1;
+.userPhotoContentI:hover > .userEdit > .userPhotoBtn:hover {
+    /* opacity: 1; */
     color: #cc0000;
+    z-index: 1;
+    /* color: black; */
+    background-color: white;
+    opacity: .8;
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 5px 10px;
+    right: 0;
+    cursor: pointer;
+    transition: background-color color;
+    /* margin: auto; */
 }
 
-.userPhotoContent {
+.userPhotoContent, .userPhotoContentI {
     position: relative;
     overflow: hidden;
     width: 293px;
     height: 293px;
+}
+
+.userPhotoContentI:hover > .userPhoto{
+    opacity: .5;
+}
+
+.userEdit {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.userPhotoContentI:hover > .userEdit > .userPhotoBtn {
+    z-index: 1;
+    color: black;
+    background-color: white;
+    /* opacity: .7; */
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
+    padding: 5px 10px;
+    right: 0;
+    cursor: pointer;
+    transition: background-color color;
+    margin: auto;
 }
