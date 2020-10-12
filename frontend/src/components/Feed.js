@@ -117,8 +117,6 @@ const Feed = () => {
                         <p className="commenterNameP">{photo.username}</p>
                     </NavLink>
                     <p className="commentContent">{photo.caption}</p>
-                    {photo.username === sessionStorage.userName ?
-                    <button className="commentEdit" type="button" onClick={handleShowEdit} value={photo.id}>edit</button> : <div></div> }
                 </div> : <div></div>}
                 <p>{hashtag}</p>
                 <Comments photo_id={photo.id}/>

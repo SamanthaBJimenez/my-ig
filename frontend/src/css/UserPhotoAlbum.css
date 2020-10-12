@@ -29,30 +29,24 @@
     z-index: 1;
     color: transparent;
     background-color: transparent;
-    /* opacity: .7; */
     border: none;
     border-radius: 2px;
-    font-weight: bold;
     padding: 5px 10px;
     right: 0;
     cursor: pointer;
 }
 
 .userPhotoContentI:hover > .userEdit > .userPhotoBtn:hover {
-    /* opacity: 1; */
-    color: #cc0000;
+    color: white;
+    background-color: rgba(139, 0, 0, 0.85);
     z-index: 1;
-    /* color: black; */
-    background-color: white;
-    opacity: .8;
     border: none;
-    border-radius: 2px;
-    font-weight: bold;
-    padding: 5px 10px;
     right: 0;
     cursor: pointer;
     transition: background-color color;
-    /* margin: auto; */
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 15px;
 }
 
 .userPhotoContent, .userPhotoContentI {
@@ -77,13 +71,12 @@
     z-index: 1;
     color: black;
     background-color: white;
-    /* opacity: .7; */
     border: none;
-    border-radius: 2px;
-    font-weight: bold;
-    padding: 5px 10px;
     right: 0;
     cursor: pointer;
     transition: background-color color;
     margin: auto;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 15px;
 }
