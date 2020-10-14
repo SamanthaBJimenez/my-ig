@@ -192,10 +192,10 @@
     display: flex;
     margin-top: 3.7%;
     height: 100%;
-    /* position: absolute; */
+    position: absolute;
     top: 0px;
     right: 0px;
-    bottom: 0px;
+    /* bottom: 0px; */
     left: 0px;
 }
     
@@ -554,4 +554,10 @@
 .photoAmount {
     float: left;
     width: fit-content;
+}
+
+.info_stats {
+    display: flex;
+    width: 20vw;
+    justify-content: space-between;
 }

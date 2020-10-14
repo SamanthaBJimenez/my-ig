@@ -82,4 +82,52 @@ const updateSingleUser = async (req, res, next) =>{
     }
 }
 
-module.exports = {getAllUsers, createNewUser, getSingleUserById, getSingleUserByEmail, updateSingleUser};
+const addNewFollower = async (req, res, next) => {
+    try {
+        let friends = await db.one(`INSERT INTO Friends (follower, following_id) VALUES('${req.body.follower}', '${req.body.following_id}') RETURNING *`);
+        res.status(200).json({
+            status: 'success',
+            message: 'you are now following user',
+            payload: friends
+        });
+    } catch(error) {
+        res.json({
+            status: error.detail,
+            message: 'you are not following user'
+        });
+    }
+}
+
+const unFollow = async (req, res, next) => {
+    try {
+        let unfollow = await db.one('DELETE FROM Friends WHERE follower = $1 AND following_id = $2 RETURNING *', [req.params.follower, req.params.following]);
+        res.status(200).json({
+            status: 'success',
+            message: 'you are now unfollowing user',
+            payload: unfollow
+        });
+    } catch(error) {
+        res.json({
+            status: error.detail,
+            message: 'you are still following user'
+        });
+    }
+}
+
+const getAllFollowers = async (req, res, next) => {
+    try {
+        let allFollowers = await db.any('SELECT Friends.follower AS follower_id, Friends.following_id AS following_id, Users.username, Users.full_name, Users.avatar FROM Users JOIN Friends ON Friends.follower = Users.id OR Friends.following_id = Users.id WHERE Users.id = $1', [req.params.id]);
+        res.status(200).json({
+            status: 'success',
+            message: 'got all following/followers',
+            payload: allFollowers
+        });
+    } catch(error) {
+        res.json({
+            status: error.detail,
+            message: 'could not get all following/followers'
+        });
+    }
+}
+
+module.exports = {getAllUsers, createNewUser, getSingleUserById, getSingleUserByEmail, updateSingleUser, addNewFollower, getAllFollowers, unFollow};

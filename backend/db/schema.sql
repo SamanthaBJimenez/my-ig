@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS Photos CASCADE;
 DROP TABLE IF EXISTS Comments CASCADE;
 DROP TABLE IF EXISTS Likes CASCADE;
 DROP TABLE IF EXISTS Hashtags CASCADE;
+DROP TABLE IF EXISTS Friends CASCADE;
 
 CREATE TABLE Users (
     id VARCHAR PRIMARY KEY,
@@ -47,4 +48,9 @@ CREATE TABLE Hashtags (
     tagger_id VARCHAR REFERENCES Users(id),
     photo_id  INT REFERENCES Photos(id),
     tag_name TEXT
+);
+
+CREATE TABLE Friends (
+    follower VARCHAR REFERENCES Users(id),
+    following_id VARCHAR REFERENCES Users(id)
 );

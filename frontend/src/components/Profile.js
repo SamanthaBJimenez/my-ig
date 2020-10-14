@@ -27,11 +27,16 @@ const Profile = () => {
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
     const [totalPhotos, setTotalPhotos] = useState(0);
+    const [followInfo, setFollowInfo] = useState([]);
+    const [followersCount, setFollowersCount] = useState(0);
+    const [followingCount, setFollowingCount] = useState(0);
+    const [following, setFollowing] = useState([]);
+    const [friends, setFriends] = useState(false);
     const API = apiURL();
     const { userProf } = useParams();
 
     useEffect(() => {
-        const getUserInfo = async (userUrl) => {
+        const getUserInfo = async (userUrl, friendUrl) => {
             try {
                 let res = await axios({
                     method: "get",
@@ -46,12 +51,38 @@ const Profile = () => {
                 setUsername(res.data.payload.username)
                 setAvatarUrl(res.data.payload.avatar)
                 setEmail(res.data.payload.email)
+                let count = await axios({
+                    method: "get",
+                    url: friendUrl,
+                    headers: {
+                        'AuthToken': token
+                    }
+                });
+                let following = 0;
+                let followers = 0;
+                console.log(count.data.payload.length)
+                for (let i = 0; i < count.data.payload.length; i++) {
+                    console.log(count.data.payload[i]);
+                    if(count.data.payload[i].follower_id === userProf) {
+                        following++
+                    } else if(count.data.payload[i].following_id === userProf && count.data.payload[i].follower_id === sessionStorage.loggedUser) {
+                        followers++
+                        setFriends(true);
+                        console.log(true);
+                    } else if(count.data.payload[i].follower_id === userProf) {
+                        followers++
+                    }
+                }
+                setFollowingCount(following);
+                setFollowersCount(followers);
+                console.log('followingCount' + following);
+                console.log('followersCount' + followers);
             } catch(error) {
                 setUser([]);
             }
         }
-        getUserInfo(`${API}/users/id/${userProf}`)
-    }, [userProf])
+        getUserInfo(`${API}/users/id/${userProf}`, `${API}/users/follow/${userProf}`)
+    }, [userProf, friends])
 
     const handleChange = (e) => {
         if(e.target.files[0]) {
@@ -127,6 +158,47 @@ const Profile = () => {
         }
     }
 
+
+    const follow = async (e) => {
+        e.preventDefault();
+        try {
+            let res = await axios({
+                method: "post",
+                url: `${API}/users/follow`,
+                headers: {
+                    'AuthToken': token,
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    'follower': sessionStorage.loggedUser, 
+                    'following_id': e.target.value
+                },
+            });
+            setFriends(true);
+            console.log(res);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    const unfollow = async (e) => {
+        e.preventDefault();
+        try {
+            let res = await axios({
+                method: "delete",
+                url: `${API}/users/unfollow/${sessionStorage.loggedUser}/${userProf}`,
+                headers: {
+                    'AuthToken': token,
+                    'Content-Type': 'application/json'
+                },
+            });
+            setFriends(false);
+            console.log(res);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
     const displayUser = () => {
         return(
             <div className="displayLoggedUser">
@@ -136,14 +208,17 @@ const Profile = () => {
                 <section className="prof_section">
                     <div className="prof_header">
                         <h1 className="profile_username">{user.username}</h1>
+                        {userProf === sessionStorage.loggedUser ? <div></div> : friends === false ? <button onClick = {follow} value={userProf}>follow</button> : <button onClick = {unfollow} value={userProf}>unfollow</button>}
                         {userProf === sessionStorage.loggedUser ? <button className="profile_btn" onClick = {handleShow}><img className="settingsBtn" src={settings} alt="edit_button"/></button> : <div></div>}
                         {/* <img className="settingsBtn" src={settings} alt="edit_button"/> */}
                         {userProf === sessionStorage.loggedUser ? <NavLink className="profile_btn" onClick={logout} exact to={"/"}><img className="logoutBtn" src={log_out} alt="logout_button"/></NavLink> : <div></div>}
                     
                         {/* <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink> */}
                     </div>
-                    <div>
+                    <div className='info_stats'>
                         {totalPhotos === 1 ? <p className="photoAmount">{totalPhotos} post</p> : <p className="photoAmount">{totalPhotos} posts</p>}
+                        {followersCount === 1 ? <p className="photoAmount">{followersCount} follower</p> : <p className="photoAmount">{followersCount} followers</p>}
+                        {followingCount === 1 ? <p className="photoAmount">{followingCount} following</p> : <p className="photoAmount">{followingCount} following</p>}
                     </div>
                     <div className="prof_info">
                         <div className="usernameDiv">
