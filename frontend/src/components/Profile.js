@@ -208,7 +208,7 @@ const Profile = () => {
                 <section className="prof_section">
                     <div className="prof_header">
                         <h1 className="profile_username">{user.username}</h1>
-                        {userProf === sessionStorage.loggedUser ? <div></div> : friends === false ? <button onClick = {follow} value={userProf}>follow</button> : <button onClick = {unfollow} value={userProf}>unfollow</button>}
+                        {userProf === sessionStorage.loggedUser ? <div></div> : friends === false ? <button className="follow_btn" onClick = {follow} value={userProf}>follow</button> : <button className="follow_btn" onClick = {unfollow} value={userProf}>unfollow</button>}
                         {userProf === sessionStorage.loggedUser ? <button className="profile_btn" onClick = {handleShow}><img className="settingsBtn" src={settings} alt="edit_button"/></button> : <div></div>}
                         {/* <img className="settingsBtn" src={settings} alt="edit_button"/> */}
                         {userProf === sessionStorage.loggedUser ? <NavLink className="profile_btn" onClick={logout} exact to={"/"}><img className="logoutBtn" src={log_out} alt="logout_button"/></NavLink> : <div></div>}
