@@ -94,9 +94,6 @@ const Upload = () => {
                     'caption': caption
                 },
             });
-
-            // console.log(res.data)
-            // setImage(res.data.payload);
             handleUpload(e)
         } catch(error) {
             setImage([]);

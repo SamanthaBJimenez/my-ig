@@ -34,10 +34,6 @@ const Feed = () => {
                 }
             });
             setPhotos(res.data.payload);
-            // const listRef = storageRef.child(`avatars`)
-            // const firstPage = await listRef.list({ maxResults: 100});
-            // console.log(firstPage.items)
-            // setPhotos(firstPage.items)
         } catch(error) {
             setPhotos([]);
         }
@@ -52,7 +48,6 @@ const Feed = () => {
                     'AuthToken': token
                 }
             });
-            // setPhotos(res.data.payload);
         } catch(error) {
             setPhotos([]);
         }
@@ -67,24 +62,16 @@ const Feed = () => {
     }
 
     useEffect(() => {
-        // if(sessionStorage.searchTerm){
-            // fetchSearch(`${API}/photos/hashtag/tag/${sessionStorage.searchTerm}`);
-            // searchResult();
-        // } else {
-            fetchPhotos();
-            // debugger;
-        // }
+        fetchPhotos();
     }, [show])
 
     const editCaption = async (e) => {
         try {
             let id = changeId;
-            // let res = await axios.patch(`${API}/photos/edit/${id}`);
             let res = await axios.patch(`${API}/photos/edit/${id}`, {
                 caption: caption
             });
             console.log(res.data.payload);
-            // setPhotoAmount(photoAmount - 1);
             handleClose();
         } catch(error) {
             console.log(error)
@@ -104,7 +91,6 @@ const Feed = () => {
 
     const photosFeed = photos.map(photo => {
         let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
-        // getPhotoInfo(photo)
         console.log(photo.id)
         return(
             <div className="feedImgContent" key={photo.id}>

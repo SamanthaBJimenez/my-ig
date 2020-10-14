@@ -122,10 +122,6 @@ const Profile = () => {
         }
     }
 
-    // const handlePhotoAmountChange = () => {
-    //     setPhotoAmount();
-    // };
-
     const handleClose = () => {
         setShow(false);
         window.location.reload(true);
@@ -157,7 +153,6 @@ const Profile = () => {
             console.log(error)
         }
     }
-
 
     const follow = async (e) => {
         e.preventDefault();
@@ -210,10 +205,7 @@ const Profile = () => {
                         <h1 className="profile_username">{user.username}</h1>
                         {userProf === sessionStorage.loggedUser ? <div></div> : friends === false ? <button className="follow_btn" onClick = {follow} value={userProf}>follow</button> : <button className="follow_btn" onClick = {unfollow} value={userProf}>unfollow</button>}
                         {userProf === sessionStorage.loggedUser ? <button className="profile_btn" onClick = {handleShow}><img className="settingsBtn" src={settings} alt="edit_button"/></button> : <div></div>}
-                        {/* <img className="settingsBtn" src={settings} alt="edit_button"/> */}
                         {userProf === sessionStorage.loggedUser ? <NavLink className="profile_btn" onClick={logout} exact to={"/"}><img className="logoutBtn" src={log_out} alt="logout_button"/></NavLink> : <div></div>}
-                    
-                        {/* <NavLink className="profile_btn" onClick={logout} exact to={"/"}>Log Out</NavLink> */}
                     </div>
                     <div className='info_stats'>
                         {totalPhotos === 1 ? <p className="photoAmount">{totalPhotos} post</p> : <p className="photoAmount">{totalPhotos} posts</p>}
@@ -261,14 +253,6 @@ const Profile = () => {
                                 <Modal.Body>
                                     <Form>
                                         <input className="mb-2 edit_input" type="text" placeholder={user.name ? <div className='ifExists'>user.name</div> : "Enter Full Name"} onChange={(e) => setFullname(e.target.value)} value={full_name} />
-                                        {/* <Form.Row>
-                                            <InputGroup className="mb-2">
-                                            <InputGroup.Prepend>
-                                                <InputGroup.Text id="inputGroup-sizing-sm">@</InputGroup.Text>
-                                            </InputGroup.Prepend>
-                                            <input className="edit_input username_input" type="text" placeholder={user.username ? user.username : "Enter Username"} onChange={(e) => setUsername(e.target.value)} value={username} />
-                                            </InputGroup>
-                                        </Form.Row> */}
                                         <input className="mb-2 edit_input" type="text" placeholder={user.email ? user.email : "Enter Email"} onChange={(e) => setEmail(e.target.value)} value={email} />
                                         <input className="mb-2 edit_input" type="text" placeholder={user.username ? user.username : "Enter Username"} onChange={(e) => setUsername(e.target.value)} value={username} />
                                         <input className="mb-2 edit_input" type="text" placeholder={user.bio ? user.bio : "Enter Bio"} onChange={(e) => setBio(e.target.value)} value={bio} />

@@ -9,12 +9,7 @@ import { useCombobox } from "downshift";
 import { NavLink } from 'react-router-dom';
 
 const Search = () => {
-    const API = apiURL();
-    // const { token } = useContext(AuthContext);
-    // const [list, setList] = useState([]);
-    // const [suggestion, setSuggest] = useState([]);
-    // const [search, setSearch] = useState("");
-    
+  const API = apiURL();  
   const [inputItems, setInputItems] = useState([])
   const [users, setUsers] = useState([])
   const [singleUser, setSingleUser] = useState("")
@@ -61,7 +56,6 @@ const Search = () => {
                 size="large"
                 className='searchDivInput'
                 />
-        {/* <input {...getInputProps()} placeholder="Search"></input> */}
             </div>
         <ul className="searchShow" {...getMenuProps()}>
             {isOpen &&
@@ -73,8 +67,6 @@ const Search = () => {
                 >
                     <li className="listSearch" style={highlightedIndex === index ? { "background": "rgb(255, 255, 255, 1)", "cursor": "pointer"} : {}} >
                         <NavLink className="navlinkSearch" exact to={`/profile/${item.id}`}><h4 className="searchName">{item.username}</h4></NavLink>
-                        
-                       
                     </li>
                 </span>
             ))}

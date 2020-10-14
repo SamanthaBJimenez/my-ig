@@ -43,7 +43,6 @@ export default function LogIn() {
                 <img className="iphoneBack" src={iphoneBack} width="461" height="821"></img>
                 
                 <div className="topDivLogIn">
-                    {/* <img className='igImg_login' src={ig_logo} alt='instagram_logo'/> */}
                     <p className="finstaTitle" >Finstagram</p>
                     <button className="login_button" type="submit" style={{"background":"limegreen"}} onClick={handleDemo}>Demo Log In</button> 
                     <form className="logInForm" onSubmit={handleSubmit}>
@@ -58,13 +57,6 @@ export default function LogIn() {
                         <NavLink className="signup" exact to={"/signup"}> Sign Up</NavLink>
                     </nav>
                 </div>
-                {/* <div className="bottomDiv">
-                    <p className="bottomP">Get the app.</p>
-                    <div className="appLinks">
-                        <img className='appStore_login' src={appStore_logo} alt='appStore_logo'/>
-                        <img className='googlePlay_login' src={googlePlay_logo} alt='googlePlay_logo'/>
-                    </div>
-                </div> */}
             </div>
         </div>
   );

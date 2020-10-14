@@ -6,9 +6,6 @@ import '../css/UserPhotoAlbum.css';
 import { useParams } from 'react-router-dom';
 import { Form, InputGroup, FormControl, Button, Modal, Col } from 'react-bootstrap';
 
-
-
-
 const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
     const { token } = useContext(AuthContext);
     const API = apiURL();
@@ -31,13 +28,6 @@ const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
                 setPhotos(res.data.payload);
                 setPhotoAmount(res.data.payload.length);
                 totalPhotoAmount(photoAmount)
-                // debugger;
-                // setUser(res.data.payload);
-                // setFullname(res.data.payload.full_name)
-                // setBio(res.data.payload.bio)
-                // setUsername(res.data.payload.username)
-                // setAvatar(res.data.payload.avatar)
-                // setEmail(res.data.payload.email)
             } catch(error) {
                 setPhotos([]);
             }
@@ -57,12 +47,10 @@ const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
     const editCaption = async (e) => {
         try {
             let id = changeId;
-            // let res = await axios.patch(`${API}/photos/edit/${id}`);
             let res = await axios.patch(`${API}/photos/edit/${id}`, {
                 caption: caption
             });
             console.log(res.data.payload);
-            // setPhotoAmount(photoAmount - 1);
             handleClose();
         } catch(error) {
             console.log(error)

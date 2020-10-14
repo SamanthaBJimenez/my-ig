@@ -26,7 +26,6 @@ const DisplayUser = () =>{
     
     return (
     <div className="loggedUser">
-        {/* <NavLink className="avatar_home" exact to={"/profile"}><img className='avatarImg' src={avatar} alt='avatar_logo'/></NavLink> */}
         <div className="infoDiv">
             <NavLink className="imgUsername" exact to={`/profile/${user.id}`}>
                 <img className="infoDivAvatar" src={user.avatar}></img>
