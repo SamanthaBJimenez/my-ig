@@ -565,12 +565,7 @@
 .follow_btn {
     flex-direction: column;
     align-items: stretch;
-    margin-bottom: 8px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 8px;
     cursor: pointer;
-    padding: 5px 9px;
     color: rgba(var(--eca,255,255,255),1);
     border: 1px solid transparent;
     background-color: #0095f6;
@@ -578,4 +573,7 @@
     border-radius: 4px;
     outline: none;
     width: 80px;
+    margin: 0px 40px;
+    padding: 3px 8px;
+    color: #fff;
 }

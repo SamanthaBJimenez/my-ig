@@ -48,29 +48,29 @@ const Search = () => {
 
     return(
         <div className="searchDiv">
-            <div {...getComboboxProps()}>
-                <Input
-                {...getInputProps()}
-                placeholder="Find your friends..."
-                enterbutton="Search"
-                size="large"
-                className='searchDivInput'
-                />
-            </div>
-        <ul className="searchShow" {...getMenuProps()}>
-            {isOpen &&
-            inputItems.map((item, index) => (
-                <span
-                    key={item.id}
-                    {...getItemProps({ item, index })}
-                    onClick={() => setSingleUser(item.username)}
-                >
-                    <li className="listSearch" style={highlightedIndex === index ? { "background": "rgb(255, 255, 255, 1)", "cursor": "pointer"} : {}} >
-                        <NavLink className="navlinkSearch" exact to={`/profile/${item.id}`}><h4 className="searchName">{item.username}</h4></NavLink>
-                    </li>
-                </span>
-            ))}
-        </ul>
+          <div {...getComboboxProps()}>
+              <Input
+              {...getInputProps()}
+              placeholder="Find your friends..."
+              enterbutton="Search"
+              size="large"
+              className='searchDivInput'
+              />
+          </div>
+          <ul className="searchShow" {...getMenuProps()}>
+              {isOpen &&
+              inputItems.map((item, index) => (
+                  <span
+                      key={item.id}
+                      {...getItemProps({ item, index })}
+                      onClick={() => setSingleUser(item.username)}
+                  >
+                      <li className="listSearch" style={highlightedIndex === index ? { "background": "rgb(255, 255, 255, 1)", "cursor": "pointer"} : {}} >
+                          <NavLink className="navlinkSearch" exact to={`/profile/${item.id}`}><h4 className="searchName">{item.username}</h4></NavLink>
+                      </li>
+                  </span>
+              ))}
+          </ul>
         </div>
     )
 }

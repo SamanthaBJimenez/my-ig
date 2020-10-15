@@ -184,8 +184,7 @@
     position: relative;
     display: flex;
     max-width: 935px;
-    padding-top: 30px;
-    padding-top: 11vh;
+    padding-top: 85px;
 }
 
 .photosFeed {
