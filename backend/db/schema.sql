@@ -31,7 +31,7 @@ CREATE TABLE Photos (
 CREATE TABLE Comments (
     id SERIAL PRIMARY KEY,
     commenter_name VARCHAR REFERENCES Users(username) ON DELETE CASCADE,
-    photo_id VARCHAR,
+    photo_id VARCHAR REFERENCES Photos(id) ON DELETE CASCADE,
     comment VARCHAR,
     time_stamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
