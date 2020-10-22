@@ -36,8 +36,6 @@ const getPhotosByUser = async (req, res, next) => {
 // const getPhotosByFriends = async (req, res, next) => {
 //     try {
 //         let { list } = Object.values(req.query);
-//         // console.log(list);
-//         // console.log(req);
 //         let photosByFriends = await db.any(`SELECT Photos.id, Photos.poster_id, Photos.imageURL, Photos.caption, Users.username FROM Photos LEFT JOIN Users ON Photos.poster_id=Users.id WHERE poster_id = ANY (${list}) ORDER BY time_stamp DESC`);
 //         res.status(200).json({
 //             status: 'success',
