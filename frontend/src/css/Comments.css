@@ -146,3 +146,19 @@
     display: contents;
     color: rgba(var(--f75,38,38,38),1);
 }
+
+.timestamp {
+    -webkit-box-direction: normal;
+    color: rgba(var(--f52,142,142,142),1);
+    text-transform: uppercase;
+    margin: 5px 0px;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    line-height: 18px;
+    font-size: 10px;
+    letter-spacing: .2px;
+    float: left;
+    padding-left: 20px;
+}

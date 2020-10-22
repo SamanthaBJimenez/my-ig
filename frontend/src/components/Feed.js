@@ -127,7 +127,7 @@ const Feed = () => {
                         <p className="commentContent">{photo.caption}</p>
                     </div> : <div></div>}
                     {/* <p>{hashtag}</p> */}
-                    <Comments photo_id={photo.id}/>
+                    <Comments photo_id={photo.id} date={photo.time_stamp}/>
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
                             <Modal.Title>Edit Caption</Modal.Title>

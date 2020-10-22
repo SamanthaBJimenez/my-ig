@@ -3,10 +3,11 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../providers/AuthProvider';
 import { apiURL } from '../util/apiURL';
+import Timestamp from './Timestamp';
 import '../css/Comments.css';
 
 
-const Comments = ({photo_id}) => {
+const Comments = ({photo_id, date}) => {
     const [photoComments, setPhotoComments] = useState([]);
     const [photoAmount, setPhotoAmount] = useState(0);
     const [comment, setComment] = useState("");
@@ -75,6 +76,7 @@ const Comments = ({photo_id}) => {
     return(
         <div className="commentsStream">
             <div className="photosComments">{allComments}</div>
+            <Timestamp date={date}/>
             <form className="commentForm" onSubmit={handleSubmit}>
                 <input className="comment_input" type="text" placeholder="Add a comment..." onChange={(e) => setComment(e.target.value)} value={comment} autoComplete="on" />
                 <input className="comment_button" type="button" value="Post" onClick={handleSubmit} disabled={comment ? false : true}/>
