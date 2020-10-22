@@ -69,7 +69,7 @@ const Profile = () => {
                         followers++
                         setFriends(true);
                         console.log(true);
-                    } else if(count.data.payload[i].follower_id === userProf) {
+                    } else if(count.data.payload[i].following_id === userProf) {
                         followers++
                     }
                 }
