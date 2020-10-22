@@ -19,6 +19,7 @@ const Feed = () => {
     const [hashtag, setHashtag] = useState("");
     const [show, setShow] = useState(false);
     const [changeId, setChangeId] = useState(0);
+    const [friends, setFriends] = useState({});
     const API = apiURL();
     const { token } = useContext(AuthContext);
     const storageRef = storage.ref();
@@ -36,6 +37,24 @@ const Feed = () => {
             setPhotos(res.data.payload);
         } catch(error) {
             setPhotos([]);
+        }
+    }
+
+    const fetchFriends = async () => {
+        try {
+            let res = await axios({
+                method: "get",
+                url: `${API}/users/follow/${sessionStorage.loggedUser}`,
+            })
+            let allFriends = {};
+            console.log(res.data.payload);
+            for(let index in res.data.payload) {
+                allFriends[index] = res.data.payload[index].following_id;
+            }
+            console.log(allFriends);
+            setFriends(allFriends);
+        } catch(error) {
+            console.log(error);
         }
     }
 
@@ -62,6 +81,7 @@ const Feed = () => {
     }
 
     useEffect(() => {
+        fetchFriends();
         fetchPhotos();
     }, [show])
 
@@ -90,37 +110,40 @@ const Feed = () => {
     }
 
     const photosFeed = photos.map(photo => {
-        let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
-        console.log(photo.id)
-        return(
-            <div className="feedImgContent" key={photo.id}>
-                <div className="imgHeader">
-                    <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}><img className="avatarFeed" src={photo.avatar}/>{photo.username}</NavLink>
+        let names = Object.values(friends);
+        if(names.includes(photo.user_id)) {
+            let source = `https://firebasestorage.googleapis.com/v0/b/my-ig-70b9f.appspot.com/o/images%2F${photo.name}?alt=media&token=98fa2adf-25ce-44da-afdd-ba63c62ce693`
+            console.log(photo.id)
+            return(
+                <div className="feedImgContent" key={photo.id}>
+                    <div className="imgHeader">
+                        <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}><img className="avatarFeed" src={photo.avatar}/>{photo.username}</NavLink>
+                    </div>
+                    <img className='feedImg' src={photo.imageurl} />
+                    {photo.caption ? <div className="content">
+                        <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}>
+                            <p className="commenterNameP">{photo.username}</p>
+                        </NavLink>
+                        <p className="commentContent">{photo.caption}</p>
+                    </div> : <div></div>}
+                    <p>{hashtag}</p>
+                    <Comments photo_id={photo.id}/>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Edit Caption</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form>
+                                <input className="mb-2 edit_input" type="text" onChange={(e) => setCaption(e.target.value)} value={caption} />
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" type="submit" onClick={editCaption} value={photo.id}>Save</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
-                <img className='feedImg' src={photo.imageurl} />
-                {photo.caption ? <div className="content">
-                    <NavLink className="imgUsername" exact to={`/profile/${photo.user_id}`}>
-                        <p className="commenterNameP">{photo.username}</p>
-                    </NavLink>
-                    <p className="commentContent">{photo.caption}</p>
-                </div> : <div></div>}
-                <p>{hashtag}</p>
-                <Comments photo_id={photo.id}/>
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Edit Caption</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form>
-                            <input className="mb-2 edit_input" type="text" onChange={(e) => setCaption(e.target.value)} value={caption} />
-                        </Form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" type="submit" onClick={editCaption} value={photo.id}>Save</Button>
-                    </Modal.Footer>
-                </Modal>
-            </div>
-        )
+            )
+        }
     })
 
     return(

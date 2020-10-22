@@ -19,10 +19,10 @@ const getAllPhotos = async (req, res, next) => {
 
 const getPhotosByUser = async (req, res, next) => {
     try {
-        let usersPhotos = await db.any('SELECT Photos.id, Photos.poster_id, Photos.imageURL, Photos.caption, Users.username FROM Photos LEFT JOIN Users ON Photos.poster_id=Users.id WHERE poster_id = $1 ORDER BY time_stamp DESC', [req.params.poster_id])
+        let usersPhotos = await db.any('SELECT Photos.id, Photos.poster_id, Photos.imageURL, Photos.caption, Users.username FROM Photos LEFT JOIN Users ON Photos.poster_id=Users.id WHERE poster_id = $1 ORDER BY time_stamp DESC', [req.params.poster_id]);
         res.status(200).json({
             status: 'success',
-            message: 'all photos by user rertrieved',
+            message: 'all photos by user retrieved',
             payload: usersPhotos
         })
     } catch(error) {
@@ -32,6 +32,25 @@ const getPhotosByUser = async (req, res, next) => {
         })
     }
 }
+
+// const getPhotosByFriends = async (req, res, next) => {
+//     try {
+//         let { list } = Object.values(req.query);
+//         // console.log(list);
+//         // console.log(req);
+//         let photosByFriends = await db.any(`SELECT Photos.id, Photos.poster_id, Photos.imageURL, Photos.caption, Users.username FROM Photos LEFT JOIN Users ON Photos.poster_id=Users.id WHERE poster_id = ANY (${list}) ORDER BY time_stamp DESC`);
+//         res.status(200).json({
+//             status: 'success',
+//             message: 'all photos by friends retrieved',
+//             payload: photosByFriends
+//         })
+//     } catch(error) {
+//         res.status(400).json({
+//             status: 'error',
+//             message: 'could not retrieve friends photos'
+//         })
+//     }
+// }
 
 const getOnePhoto = async (req, res, next) => {
     try {
