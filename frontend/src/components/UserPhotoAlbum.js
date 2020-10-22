@@ -14,6 +14,7 @@ const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
     const [show, setShow] = useState(false);
     const [changeId, setChangeId] = useState(0);
     const [caption, setCaption] = useState("");
+    const [submit, setSubmit] = useState(false);
 
     useEffect(() => {
         const getUserPhotos = async (userPhotosUrl) => {
@@ -51,7 +52,7 @@ const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
                 caption: caption
             });
             console.log(res.data.payload);
-            handleClose();
+            setSubmit(true);
         } catch(error) {
             console.log(error)
             handleClose();
@@ -64,6 +65,7 @@ const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
     }
 
     const handleClose = () => {
+        setSubmit(false);
         setShow(false);
         window.location.reload(true);
     };
@@ -85,13 +87,17 @@ const UserPhotoAlbum = ({userProf, totalPhotoAmount}) => {
                         <Modal.Title>Edit Caption</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        {submit ? <div><p>"{caption}"</p><p>Edits Saved!</p></div> :
                         <Form>
                             <input className="mb-2 edit_input" type="text" onChange={(e) => setCaption(e.target.value)} value={caption} />
                         </Form>
+                        }
                     </Modal.Body>
+                    {submit ? <div></div> :
                     <Modal.Footer>
                         <Button variant="secondary" type="submit" onClick={editCaption} value={photo.id}>Save</Button>
                     </Modal.Footer>
+                    }
                 </Modal>
             </div>
         )

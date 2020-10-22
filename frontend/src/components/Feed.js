@@ -126,7 +126,7 @@ const Feed = () => {
                         </NavLink>
                         <p className="commentContent">{photo.caption}</p>
                     </div> : <div></div>}
-                    <p>{hashtag}</p>
+                    {/* <p>{hashtag}</p> */}
                     <Comments photo_id={photo.id}/>
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
