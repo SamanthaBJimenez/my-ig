@@ -19,11 +19,10 @@
     -webkit-box-pack: center;
     justify-content: center;
     margin-top: 12px;
-    /* max-width: 350px; */
     width: 100%;
-    }
+}
     
-    .topDivLogIn {
+.topDivLogIn {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -44,7 +43,7 @@
     width: 45%;
     position: absolute;
     right: 0;
-    }
+}
     
 .finstaTitle {
     height: 51px;
@@ -55,7 +54,7 @@
     margin: 25px 0px 35px 0px;
 }
 
-    .igImg_login {
+.igImg_login {
     color: rgba(var(--i1d,38,38,38),1);
     -webkit-box-direction: normal;
     padding: 0;
@@ -73,9 +72,9 @@
     background-image: url(/static/bundles/es6/sprite_core_2x_935344957e35.png/935344957e35.png);
     background-size: 411px 396px;
     background-position: -97px 0;
-    }
+}
     
-    .logInForm {
+.logInForm {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -92,7 +91,6 @@
     padding: 0;
     position: relative;
     margin-bottom: 10px;
-    
     color: rgba(var(--i1d,38,38,38),1);
     margin: 0;
     padding: 0;
@@ -103,19 +101,19 @@
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
-    }
+}
     
-    .login_input {
-        background: rgba(var(--b3f,250,250,250),1);
-        overflow: hidden;
-        padding: 9px 0 7px 8px;
-        border: 1px solid rgba(var(--ca6,219,219,219),1);
-        border-radius: 3px;
-        font: inherit;
-        margin: 0 40px 6px;
-    }
+.login_input {
+    background: rgba(var(--b3f,250,250,250),1);
+    overflow: hidden;
+    padding: 9px 0 7px 8px;
+    border: 1px solid rgba(var(--ca6,219,219,219),1);
+    border-radius: 3px;
+    font: inherit;
+    margin: 0 40px 6px;
+}
     
-    .middleDivLogIn {
+.middleDivLogIn {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -136,9 +134,9 @@
     right: 0;
     bottom: 112px;    
     width: 45%;
-    }
+}
     
-    .bottomDiv {
+.bottomDiv {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -154,9 +152,9 @@
     margin: 0;
     padding: 0;
     position: relative;
-    }
+}
     
-    .mainDiv {
+.mainDiv {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -179,26 +177,26 @@
     max-width: 935px;
     padding-bottom: 44px;
     width: 100%;
-    }
+}
     
-    .login_button {
-        flex-direction: column;
-        align-items: stretch;
-        margin-bottom: 8px;
-        margin-left: 40px;
-        margin-right: 40px;
-        margin-top: 8px;
-        cursor: pointer;
-        padding: 5px 9px;
-        color: rgba(var(--eca,255,255,255),1);
-        border: 1px solid transparent;
-        background-color: #0095f6;
-        font: inherit;
-        border-radius: 4px;
-        outline: none;
-    }
+.login_button {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 8px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 8px;
+    cursor: pointer;
+    padding: 5px 9px;
+    color: rgba(var(--eca,255,255,255),1);
+    border: 1px solid transparent;
+    background-color: #0095f6;
+    font: inherit;
+    border-radius: 4px;
+    outline: none;
+}
     
-    .midNav {
+.midNav {
     -webkit-box-direction: normal;
     padding: 0;
     border: 0;
@@ -208,9 +206,9 @@
     font-size: 14px;
     margin: 15px;
     text-align: center;
-    }
+}
     
-    .signup {
+.signup {
     -webkit-box-direction: normal;
     text-align: center;
     margin: 0;
@@ -220,9 +218,9 @@
     vertical-align: baseline;
     text-decoration: none;
     color: rgba(var(--d69,0,149,246),1);
-    }
+}
     
-    .bottomP {
+.bottomP {
     -webkit-box-direction: normal;
     padding: 0;
     border: 0;
@@ -233,14 +231,14 @@
     line-height: 18px;
     margin: 10px 20px 10px 20px;
     text-align: center;
-    }
+}
     
-    .login_button:active {
-        background-color: rgba(var(--d69,0,149,246),.3);
-        outline: none;
-    }
+.login_button:active {
+    background-color: rgba(var(--d69,0,149,246),.3);
+    outline: none;
+}
     
-    .appLinks {
+.appLinks {
     color: rgba(var(--i1d,38,38,38),1);
     font: inherit;
     vertical-align: baseline;
@@ -258,9 +256,9 @@
     -webkit-box-pack: center;
     justify-content: center;
     margin: 10px 0 10px 0;
-    }
+}
     
-    .appStore_login, .googlePlay_login {
+.appStore_login, .googlePlay_login {
     -webkit-box-direction: normal;
     margin: 0;
     padding: 0;
@@ -271,40 +269,31 @@
     color: rgba(var(--fe0,0,55,107),1);
     text-decoration: none;
     width: 150px;
-    }
+}
     
-    .login_input {
-        background: rgba(var(--b3f,250,250,250),1);
+.login_input {
+    background: rgba(var(--b3f,250,250,250),1);
     overflow: hidden;
     padding: 9px 0 7px 8px;
     border: 1px solid rgba(var(--ca6,219,219,219),1);
     border-radius: 3px;
     margin: 0 40px 6px;
     font-size: 12px;
-    }
+}
 
-    .iphoneImg {
-        -webkit-align-self: center;
+.iphoneImg {
+    -webkit-align-self: center;
     -ms-flex-item-align: center;
-    /* align-self: center; */
-    /* background-image: url(/static/images/homepage/home-phones.png/43cc71bb1b43.png); */
-    /* background-position: 0 0; */
-    /* background-size: 454px 618px; */
     -webkit-flex-basis: 454px;
     -ms-flex-preferred-size: 454px;
-    /* flex-basis: 454px; */
     height: 618px;
-    /* margin-left: -37px; */
-    /* margin-right: -15px; */
     align-self: start;
-    }
+}
 
-    .iphoneBack {
-        height: 436px;
+.iphoneBack {
+    height: 436px;
     left: 148px;
-    /* opacity: 0; */
     position: absolute;
     top: 95px;
-    /* visibility: hidden; */
     width: 247px;
-    }
+}
