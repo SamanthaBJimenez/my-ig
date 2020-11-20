@@ -297,3 +297,54 @@
     top: 95px;
     width: 247px;
 }
+
+@media (max-width: 820px) {
+    .iphoneImg, .iphoneBack {
+        display: none;
+    }
+    .topDivLogIn, .middleDivLogIn {
+        color: rgba(var(--i1d,38,38,38),1);
+        font: inherit;
+        vertical-align: baseline;
+        align-items: stretch;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        position: absolute;
+        background-color: rgba(var(--d87,255,255,255),1);
+        border: 1px solid rgba(var(--b6a,219,219,219),1);
+        border-radius: 1px;
+        margin: 15px;
+        /* padding: 10px 0; */
+        width: 95%;
+        position: relative;
+        right: auto;
+    }
+    .topDivLogIn {
+        padding: 20vh 0;
+        height: 75vh;
+    }
+    .middleDivLogIn {
+        padding: 5vh 0;
+        /* position: absolute; */
+        bottom: auto;
+        height: 15vh;
+    }
+    .logIn {
+        height: 100vh;
+        position: relative;
+        margin-top: 0px;
+        justify-content: center;
+        /* width: 100vh; */
+        align-items: center;
+        overflow: hidden;
+    }
+    .mainDiv {
+        display: flex;
+        margin: 0px;
+        height: 100vh;
+        /* justify-content: inherit; */
+        overflow: hidden;
+    }
+}
