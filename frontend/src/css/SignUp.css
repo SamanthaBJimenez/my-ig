@@ -286,3 +286,43 @@
     top: 95px;
     width: 247px;
 }
+
+@media (max-width: 820px) {
+    .signUp {
+        height: 80vh;
+        position: relative;
+        margin: 0px;
+        justify-content: space-evenly;
+        align-items: center;
+        overflow: visible;
+    }
+    .topDiv, .middleDiv {
+        color: rgba(var(--i1d,38,38,38),1);
+        font: inherit;
+        vertical-align: baseline;
+        align-items: stretch;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        position: absolute;
+        background-color: rgba(var(--d87,255,255,255),1);
+        border: 1px solid rgba(var(--b6a,219,219,219),1);
+        border-radius: 1px;
+        margin: 0px;
+        width: 95%;
+        position: relative;
+        right: auto;
+    }
+    .topDiv {
+        padding: unset;
+        height: 60vh;
+        justify-content: center;
+    }
+    .middleDiv {
+        padding: unset;
+        bottom: auto;
+        height: 14vh;
+        justify-content: center;
+    }
+}

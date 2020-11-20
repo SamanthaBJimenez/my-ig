@@ -316,8 +316,6 @@
         border: 1px solid rgba(var(--b6a,219,219,219),1);
         border-radius: 1px;
         margin: 0px;
-        /* margin: 15px; */
-        /* padding: 10px 0; */
         width: 95%;
         position: relative;
         right: auto;
@@ -328,9 +326,7 @@
         justify-content: center;
     }
     .middleDivLogIn {
-        /* padding: 5vh 0; */
         padding: unset;
-        /* position: absolute; */
         bottom: auto;
         height: 14vh;
         justify-content: center;
@@ -338,10 +334,8 @@
     .logIn {
         height: 80vh;
         position: relative;
-        /* margin-top: 2vh; */
         margin: 0px;
         justify-content: space-evenly;
-        /* width: 100vh; */
         align-items: center;
         overflow: visible;
     }
@@ -350,7 +344,6 @@
         margin: 0px;
         padding: 0px;
         height: 80vh;
-        /* justify-content: inherit; */
         overflow: hidden;
     }
 }
