@@ -315,35 +315,41 @@
         background-color: rgba(var(--d87,255,255,255),1);
         border: 1px solid rgba(var(--b6a,219,219,219),1);
         border-radius: 1px;
-        margin: 15px;
+        margin: 0px;
+        /* margin: 15px; */
         /* padding: 10px 0; */
         width: 95%;
         position: relative;
         right: auto;
     }
     .topDivLogIn {
-        padding: 20vh 0;
-        height: 75vh;
+        padding: unset;
+        height: 60vh;
+        justify-content: center;
     }
     .middleDivLogIn {
-        padding: 5vh 0;
+        /* padding: 5vh 0; */
+        padding: unset;
         /* position: absolute; */
         bottom: auto;
-        height: 15vh;
+        height: 14vh;
+        justify-content: center;
     }
     .logIn {
-        height: 100vh;
+        height: 80vh;
         position: relative;
-        margin-top: 0px;
-        justify-content: center;
+        /* margin-top: 2vh; */
+        margin: 0px;
+        justify-content: space-evenly;
         /* width: 100vh; */
         align-items: center;
-        overflow: hidden;
+        overflow: visible;
     }
     .mainDiv {
         display: flex;
         margin: 0px;
-        height: 100vh;
+        padding: 0px;
+        height: 80vh;
         /* justify-content: inherit; */
         overflow: hidden;
     }
