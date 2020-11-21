@@ -39,3 +39,12 @@
     text-decoration: none;
     color: black;
 }
+
+@media (max-width: 820px) {
+    .searchDivInput {
+        padding: 1vh 0vh 1vh 2vh;
+    }
+    .searchDiv {
+        width: fit-content;
+    }
+}
