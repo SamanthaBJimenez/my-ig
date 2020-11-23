@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { login } from '../util/firebaseFunctions';
+import axios from "axios";
 import '../css/LogIn.css';
 import ig_logo from '../ImgFiles/ig_logo.png';
 import appStore_logo from '../ImgFiles/appStoreIcon.png';
@@ -12,6 +13,10 @@ export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+
+  axios.get('/', (req, res) => {
+    return res.send('Hello');
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
