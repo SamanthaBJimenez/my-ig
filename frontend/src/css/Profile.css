@@ -638,5 +638,20 @@
     }
     .userAlbumDiv {
         align-items: stretch;
+        padding: 40px 2px;
+    }
+    .follow_btn {
+        flex-direction: column;
+        align-items: stretch;
+        cursor: pointer;
+        border: 1px solid transparent;
+        background-color: #0095f6;
+        font: revert;
+        border-radius: 4px;
+        outline: none;
+        width: 80px;
+        margin: 0;
+        padding: 1px 6px;
+        color: #fff;
     }
 }
