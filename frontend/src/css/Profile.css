@@ -615,7 +615,6 @@
         font-size: 23px !important;
     }
     .home, .upload, .profile {
-        /* margin-left: 1.5vh !important; */
         margin: 0 !important;
     }
     .links {
@@ -626,7 +625,6 @@
     .outer_profile_div {
         width: 100%;
         margin: 0;
-        /* overflow: hidden; */
     }
     .navbar {
         position: relative !important;
@@ -637,5 +635,8 @@
     }
     .logoutBtn {
         margin-top: 2px;
+    }
+    .userAlbumDiv {
+        align-items: stretch;
     }
 }

@@ -80,3 +80,22 @@
     padding: 10px 15px;
     font-size: 15px;
 }
+
+@media (max-width: 820px) {
+    .userPhotoAlbum {
+        grid-column-gap: 0px !important;
+        column-gap: 0px !important;
+        grid-column-gap: 2px !important;
+        justify-items: center;
+        width: 100%;
+        grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 1rem;
+    }
+    .userPhotoContentI {
+        width: -webkit-fill-available;
+        height: 20vh;
+    }
+    .userPhoto {
+        display: block;
+    }
+}
