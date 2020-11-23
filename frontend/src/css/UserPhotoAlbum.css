@@ -91,7 +91,7 @@
         grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
         grid-gap: 1rem;
     }
-    .userPhotoContentI {
+    .userPhotoContent, .userPhotoContentI {
         width: -webkit-fill-available;
         height: 20vh;
     }
