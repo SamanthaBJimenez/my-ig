@@ -94,3 +94,10 @@
   background-color: rgba(0, 149, 246, .5);
   font-weight: bolder;
 }
+
+@media (max-width: 820px) {
+  .modal-content {
+    margin: 20% auto;
+    width: 85%;
+  }
+}
