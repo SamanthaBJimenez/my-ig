@@ -322,6 +322,10 @@
     .feed {
         width: 100%;
         overflow: hidden;
+        display: block;
+    }
+    .feedContent {
+        padding-top: 0;
     }
     .feedImg {
         width: 100%;
